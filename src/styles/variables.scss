@@ -1,0 +1,12 @@
+// base color
+
+//header
+$headerHeight: 60px;
+
+//sideBat
+$sideBarColor: rgb(238, 241, 246);
+
+:export {
+  headerHeight: $headerHeight;
+  sideBarColor: $sideBarColor;
+}
