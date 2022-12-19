@@ -2,12 +2,17 @@
   <el-container>
     <el-header>{{ title }}</el-header>
     <el-container>
-      <el-aside width="auto">
+      <el-aside width="200px">
         <SideBar></SideBar>
       </el-aside>
       <el-container>
         <el-main>
-          <router-view :key="key" />
+          <el-card>
+            <div slot="header">
+              <span>{{ pageName }}</span>
+            </div>
+            <router-view :key="key" />
+          </el-card>
         </el-main>
       </el-container>
     </el-container>
@@ -28,6 +33,9 @@ export default {
   computed: {
     key () {
       return this.$route.path
+    },
+    pageName () {
+      return this.$route.meta.title
     }
   }
 }

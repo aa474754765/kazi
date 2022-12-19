@@ -1,18 +1,18 @@
 <template>
   <div v-if="!item.hidden">
     <template v-if="hasChildren(item.children)">
-      <el-submenu :index="item.path">
+      <el-submenu :index="realPath">
         <template v-slot:title>
-          <i :class="item.icon || 'el-icon-menu'"></i>
+          <i :class="'el-icon-' + item.icon || 'menu'"></i>
           <span v-if="!collapse">{{ item.title }}</span>
         </template>
-        <sidebar-item v-for="child in itemChildren(item.children)" :key="child.path" :item="child"></sidebar-item>
+        <sidebar-item v-for="child in itemChildren(item.children)" :key="child.path" :item="child" :path="realPath" :collapse="collapse"></sidebar-item>
       </el-submenu>
     </template>
     <template v-else>
-      <router-link class="router-link" :to="item.path">
-        <el-menu-item :index="item.path" :disabled="item.disabled">
-          <i :class="item.icon || 'el-icon-menu'"></i>
+      <router-link class="router-link" :to="realPath">
+        <el-menu-item :index="realPath" :disabled="item.disabled">
+          <i :class="'el-icon-' + item.icon || 'menu'"></i>
           <template v-slot:title>
             <span>{{ item.title }}</span>
           </template>
@@ -30,9 +30,17 @@ export default {
       type: Object,
       required: true
     },
+    path: {
+      type: String
+    },
     collapse: {
       type: Boolean,
       default: true
+    }
+  },
+  computed: {
+    realPath () {
+      return !this.path ? this.item.path : `${this.path}/${this.item.path}`
     }
   },
   methods: {
