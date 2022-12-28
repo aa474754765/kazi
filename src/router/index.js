@@ -48,6 +48,19 @@ export const routes = [
       }
     ]
   },
+  {
+    path: '/fun',
+    component: Layout,
+    meta: { title: '小程序', icon: 'lollipop' },
+    children: [
+      {
+        path: 'form_creator',
+        component: () => import('@/pages/form-creator/index'),
+        name: 'formCreator',
+        meta: { title: '自定义表单', icon: 'eleme' }
+      }
+    ]
+  },
   { path: '*', redirect: '/dashboard' }
 ]
 
