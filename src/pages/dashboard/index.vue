@@ -1,10 +1,38 @@
 <template>
-  <div>this is the dashboard</div>
+  <el-row :gutter="20">
+    <el-col :span="16">
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <kpi-item score="12,325,131" backgroundColor="cadetblue" icon="sell" title="销售额" trendText="+ 2.8%"
+            targetText="20,000,000"></kpi-item>
+        </el-col>
+        <el-col :span="12">
+          <kpi-item score="210" backgroundColor="violet" title="客户" trendText="- 11.2%"></kpi-item>
+        </el-col>
+      </el-row>
+      <statistic></statistic>
+      <line-chart></line-chart>
+    </el-col>
+    <el-col :span="8">
+      <rank></rank>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
+import Rank from './Rank'
+import KpiItem from './KpiItem'
+import Statistic from './Statistic.vue'
+import LineChart from './LineChart.vue'
+
 export default {
   name: 'Dashboard',
+  components: {
+    Rank,
+    KpiItem,
+    Statistic,
+    LineChart
+  },
   data () {
     return {
 
