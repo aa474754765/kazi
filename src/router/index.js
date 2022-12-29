@@ -58,6 +58,12 @@ export const routes = [
         component: () => import('@/pages/form-creator/index'),
         name: 'formCreator',
         meta: { title: '自定义表单', icon: 'eleme' }
+      },
+      {
+        path: 'memory',
+        component: () => import('@/pages/memory/index'),
+        name: 'memory',
+        meta: { title: '纪念日', icon: 'moon-night' }
       }
     ]
   },
