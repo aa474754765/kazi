@@ -9,19 +9,23 @@
         <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)" @close="action = '';reloadCards()"></card-edit>
       </div>
       <el-row :gutter="32">
-        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" v-for="c in cards" :key="c.id">
-          <card :attr="c" :inEdit="inEditMode" @edit="editCard($event)" @remove="removeCard($event)"></card>
-        </el-col>
+        <draggable v-model="cards" chosen-class="chosen" force-fallback="true" group="people" animation="300" :disabled="!inEditMode"
+         @end="onDragEnd">
+            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" v-for="c in cards" :key="c.id">
+              <card :attr="c" :inEdit="inEditMode" @edit="editCard($event)" @remove="removeCard($event)"></card>
+            </el-col>
+        </draggable>
       </el-row>
     </div>
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import Card from './Card'
 import CardEdit from './CardEdit'
 
-import { addArrayStorage, updateArrayStorage, deleteArrayStorage, getStorage } from '@/utils/storage'
+import { addArrayStorage, updateArrayStorage, deleteArrayStorage, getStorage, setStorage } from '@/utils/storage'
 import { deepClone } from '@/utils/common'
 
 const storageKey = 'memory'
@@ -30,7 +34,8 @@ export default {
   name: '',
   components: {
     Card,
-    CardEdit
+    CardEdit,
+    draggable
   },
   data () {
     return {
@@ -85,6 +90,9 @@ export default {
     },
     reloadCards () {
       this.cards = getStorage(storageKey) || []
+    },
+    onDragEnd () {
+      setStorage(storageKey, this.cards)
     }
   }
 }
@@ -105,6 +113,9 @@ i {
 
   &+span {
     font-size: 12px;
+    color: $blue;
+    margin-left: -12px;
+    margin-right: 16px;
   }
 }
 
