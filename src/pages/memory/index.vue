@@ -6,7 +6,7 @@
     </el-row>
     <div class="card-container">
       <div v-if="action" class="edit-form">
-        <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)" @close="action = '';reloadCards()"></card-edit>
+        <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)" @close="action = '';reloadCards();inEditMode=false"></card-edit>
       </div>
       <el-row :gutter="32">
         <draggable v-model="cards" chosen-class="chosen" force-fallback="true" group="people" animation="300" :disabled="!inEditMode"
