@@ -1,6 +1,7 @@
 <template>
-  <el-card :body-style="{ padding: '0', color: attr.textColor }" @click.native="$emit('edit', attr)"
-    :style="{ 'background-image': 'linear-gradient(' + attr.background + ')' }" class="card">
+  <el-card :body-style="{ padding: '0', color: attr.textColor }"
+    :style="{ 'background-image': 'linear-gradient(' + attr.background + ')', cursor: inEdit ? 'move' : 'default' }"
+    class="card">
     <span class="tag">{{ attr.type }}</span>
     <div class="from-to-text">
       <a>{{ attr.calculateType ? '剩' : '第' }}</a>
@@ -12,13 +13,15 @@
       <a>{{ attr.name }}</a>
       <a>{{ '纪念日：' + attr.date }}</a>
     </div>
+    <i v-if="inEdit" @click="$emit('remove', attr)" class="el-icon-close"></i>
+    <i v-if="inEdit" @click="$emit('edit', attr)" class="el-icon-edit"></i>
   </el-card>
 </template>
 
 <script>
 export default {
   name: '',
-  props: ['attr'],
+  props: ['attr', 'inEdit'],
   data () {
     return {
     }
@@ -53,18 +56,45 @@ export default {
 
 </script>
 <style lang="scss" scoped>
+@import "~@/styles/variables.scss";
+
 .card {
   position: relative;
   box-sizing: border-box;
   margin: 16px 0;
   height: 160px;
   padding: 8px;
+  overflow: visible;
+
+  .el-icon-close,
+  .el-icon-edit {
+    position: absolute;
+    text-align: center;
+    width: 32px;
+    line-height: 20px;
+    border-radius: 10px;
+    left: 0;
+    color: #fff;
+    cursor: pointer;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .el-icon-close {
+    top: 0;
+    background-color: $red;
+  }
+
+  .el-icon-edit {
+    top: 30px;
+    background-color: $blue;
+  }
 
   .tag {
     position: absolute;
     right: 8px;
     font-size: 12px;
     padding: 2px 4px;
+    color: #fff;
     background-color: burlywood;
     border-radius: 8px;
   }

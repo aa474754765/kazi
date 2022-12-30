@@ -87,8 +87,6 @@ export default {
 
 </script>
 <style lang="scss" scoped>
-@import "~@/styles/variables.scss";
-
 .el-icon-close {
   height: 40px;
   line-height: 40px;

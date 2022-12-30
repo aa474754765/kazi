@@ -1,15 +1,16 @@
 <template>
   <div>
     <el-row>
-      <i class="el-icon-plus" @click="newClicked()"></i><span v-if="cardCount === 0">快来添加你的第一个纪念日吧！</span>
+      <i :class="'el-icon-' + (action === 'create' ? 'minus' : 'plus')" @click="newClicked()"></i><span v-if="cardCount === 0">快来添加你的第一个纪念日吧！</span>
+      <i :class="'el-icon-' + (inEditMode ? 'check' : 'edit')" @click="editClicked()"></i>
     </el-row>
     <div class="card-container">
       <div v-if="action" class="edit-form">
-        <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)" @close="action = ''"></card-edit>
+        <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)" @close="action = '';reloadCards()"></card-edit>
       </div>
       <el-row :gutter="32">
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" v-for="c in cards" :key="c.id">
-          <card :attr="c" @edit="editCard($event)"></card>
+          <card :attr="c" :inEdit="inEditMode" @edit="editCard($event)" @remove="removeCard($event)"></card>
         </el-col>
       </el-row>
     </div>
@@ -20,7 +21,7 @@
 import Card from './Card'
 import CardEdit from './CardEdit'
 
-import { addArrayStorage, updateArrayStorage, getStorage } from '@/utils/storage'
+import { addArrayStorage, updateArrayStorage, deleteArrayStorage, getStorage } from '@/utils/storage'
 import { deepClone } from '@/utils/common'
 
 const storageKey = 'memory'
@@ -35,7 +36,8 @@ export default {
     return {
       action: '',
       cards: [],
-      currentData: null
+      currentData: null,
+      inEditMode: false
     }
   },
   mounted () {
@@ -48,7 +50,8 @@ export default {
   },
   methods: {
     newClicked () {
-      this.action = 'create'
+      this.action = this.action === 'create' ? '' : 'create'
+      this.inEditMode = false
       this.currentData = {
         name: '',
         date: '',
@@ -56,6 +59,12 @@ export default {
         textColor: '#FFFFFF',
         background: '135deg, rgb(206, 253, 206), rgb(211, 207, 252)',
         calculateType: false
+      }
+    },
+    editClicked () {
+      this.inEditMode = !this.inEditMode
+      if (!this.inEditMode) {
+        this.action = ''
       }
     },
     editCard (data) {
@@ -70,19 +79,29 @@ export default {
       updateArrayStorage(storageKey, data.id, data)
       this.reloadCards()
     },
+    removeCard (data) {
+      deleteArrayStorage(storageKey, data.id)
+      this.reloadCards()
+    },
     reloadCards () {
       this.cards = getStorage(storageKey) || []
-      this.action = ''
     }
   }
 }
 
 </script>
 <style lang="scss" scoped>
+@import "~@/styles/variables.scss";
+
 i {
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   vertical-align: bottom;
+  margin-right: 16px;
+
+  &:hover {
+    color: $blue
+  }
 
   &+span {
     font-size: 12px;
