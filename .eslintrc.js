@@ -24,7 +24,7 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 'off',
     "vue/comment-directive": "off",
-    "space-before-function-paren": 0,
+    "space-before-function-paren": ["error", "never"],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }

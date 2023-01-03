@@ -33,7 +33,7 @@ export default {
     Statistic,
     LineChart
   },
-  data () {
+  data() {
     return {
 
     }

@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       like: true,
       value1: 12900,

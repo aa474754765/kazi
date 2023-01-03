@@ -17,19 +17,19 @@ export default {
       default: '400px'
     }
   },
-  data () {
+  data() {
     return {
       id: 'line-chart',
       chart: null
     }
   },
-  mounted () {
+  mounted() {
     this.initChart()
     window.onresize = () => {
       this.chart.resize()
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (!this.chart) {
       return
     }
@@ -37,7 +37,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart () {
+    initChart() {
       this.chart = echarts.init(document.getElementById(this.id))
       this.chart.setOption({
         color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],

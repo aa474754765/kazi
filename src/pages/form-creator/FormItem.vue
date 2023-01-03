@@ -21,14 +21,14 @@ export default {
     FormItemWrapper
   },
   props: ['data'],
-  data () {
+  data() {
     return {
       itemType: '',
       inDefault: true
     }
   },
   methods: {
-    select (formItemType) {
+    select(formItemType) {
       this.inDefault = false
       this.itemType = formItemType
       this.$refs.popoverRef.doClose()
@@ -40,7 +40,8 @@ export default {
 <style lang="scss" scoped>
 @import "~@/styles/variables.scss";
 
-.form-item-container,.placeholder-container {
+.form-item-container,
+.placeholder-container {
   width: calc(100% - 32px);
   margin: 0 16px;
   height: 40px;
@@ -48,7 +49,8 @@ export default {
   align-items: center;
 }
 
-.form-item-container,.placeholder-container {
+.form-item-container,
+.placeholder-container {
   justify-content: start;
 }
 

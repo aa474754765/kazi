@@ -41,7 +41,7 @@
 <script>
 export default {
   props: ['selector'],
-  data () {
+  data() {
     return {
       model: '',
       model2: ''

@@ -6,7 +6,8 @@
           <i :class="'el-icon-' + item.icon || 'menu'"></i>
           <span v-if="!collapse">{{ item.title }}</span>
         </template>
-        <sidebar-item v-for="child in itemChildren(item.children)" :key="child.path" :item="child" :path="realPath" :collapse="collapse"></sidebar-item>
+        <sidebar-item v-for="child in itemChildren(item.children)" :key="child.path" :item="child" :path="realPath"
+          :collapse="collapse"></sidebar-item>
       </el-submenu>
     </template>
     <template v-else>
@@ -39,15 +40,15 @@ export default {
     }
   },
   computed: {
-    realPath () {
+    realPath() {
       return !this.path ? this.item.path : `${this.path}/${this.item.path}`
     }
   },
   methods: {
-    itemChildren (children = []) {
+    itemChildren(children = []) {
       return children.filter(i => !i.hidden)
     },
-    hasChildren (children = []) {
+    hasChildren(children = []) {
       return children.filter(i => !i.hidden).length > 0
     }
   }
@@ -55,7 +56,7 @@ export default {
 </script>
 
 <style scoped>
-  .router-link {
-    text-decoration: none;
-  }
+.router-link {
+  text-decoration: none;
+}
 </style>

@@ -41,7 +41,7 @@ export default {
   components: {
     FormItem
   },
-  data () {
+  data() {
     let validateLabel = (rule, value, callback) => {
       if (this.formItemList.find(i => i.label === value)) {
         callback(new Error('标签名不能重复'))
@@ -68,7 +68,7 @@ export default {
     }
   },
   methods: {
-    addNewLine () {
+    addNewLine() {
       this.$refs.newForm.validate((valid) => {
         if (valid) {
           const result = {
@@ -79,7 +79,7 @@ export default {
         }
       })
     },
-    removeLine (index) {
+    removeLine(index) {
       this.formItemList.splice(index, 1)
     }
   }
@@ -93,5 +93,4 @@ export default {
   font-size: 24px;
   cursor: pointer
 }
-
 </style>

@@ -14,8 +14,8 @@
         </el-form>
       </el-col>
       <el-col :xs="24" :sm="12" v-if="jsonResult">
-        <vue-json-pretty height="432" :virtual="true" :showLine="true" :showIcon="true"
-          :showLineNumber="true" :data="jsonResult" />
+        <vue-json-pretty height="432" :virtual="true" :showLine="true" :showIcon="true" :showLineNumber="true"
+          :data="jsonResult" />
       </el-col>
     </el-row>
   </div>
@@ -32,7 +32,7 @@ export default {
   components: {
     VueJsonPretty
   },
-  data () {
+  data() {
     return {
       form: {
         jsonText: ''
@@ -46,14 +46,14 @@ export default {
     }
   },
   methods: {
-    transform () {
+    transform() {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.jsonResult = JSON.parse(this.form.jsonText)
         }
       })
     },
-    clear () {
+    clear() {
       this.form.jsonText = ''
       this.jsonResult = null
     }

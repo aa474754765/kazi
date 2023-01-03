@@ -44,7 +44,7 @@
 <script>
 export default {
   props: ['type', 'formData'],
-  data () {
+  data() {
     return {
       form: {
         name: '',
@@ -73,14 +73,14 @@ export default {
   },
   watch: {
     formData: {
-      handler (value) {
+      handler(value) {
         this.form = value
       },
       immediate: true
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
           if (this.type === 'create') {
@@ -92,7 +92,7 @@ export default {
         }
       })
     },
-    selectBackground (gradient) {
+    selectBackground(gradient) {
       this.$refs.popoverRef.doClose()
       this.form.background = gradient
     }

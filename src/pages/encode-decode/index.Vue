@@ -15,20 +15,20 @@
 <script>
 export default {
   name: '',
-  data () {
+  data() {
     return {
       text: '',
       result: ''
     }
   },
   methods: {
-    encode () {
+    encode() {
       this.result = encodeURIComponent(this.text)
     },
-    decode () {
+    decode() {
       this.result = decodeURIComponent(this.text)
     },
-    reset () {
+    reset() {
       this.text = this.result = ''
     }
   }

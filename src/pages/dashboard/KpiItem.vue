@@ -8,7 +8,7 @@
       <span>{{ title }}</span>
     </div>
     <div v-if="targetText" class="target-text">
-      <span>{{  targetText }}</span>
+      <span>{{ targetText }}</span>
     </div>
     <div class="trend-text">
       <span>{{ trendText }}</span>
@@ -20,7 +20,7 @@
 export default {
   name: '',
   props: ['score', 'backgroundColor', 'icon', 'title', 'trendText', 'targetText'],
-  data () {
+  data() {
     return {
       styleObject: {
         'background-color': this.backgroundColor

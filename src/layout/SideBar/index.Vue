@@ -18,34 +18,34 @@ export default {
   components: {
     SidebarItem
   },
-  data () {
+  data() {
     return {
       collapse: false,
       routes: []
     }
   },
-  beforeMount () {
+  beforeMount() {
     this.routes = filterRoutes()
     this.resizeHandler()
     window.addEventListener('resize', this.resizeHandler)
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('resize', this.resizeHandler)
   },
   computed: {
-    menuItems () {
+    menuItems() {
       return this.routes.filter(i => !i.hidden)
     },
-    landingPath () {
+    landingPath() {
       return this.$route.path
     }
   },
   methods: {
-    isMobile () {
+    isMobile() {
       const rect = document.body.getBoundingClientRect()
       return rect.width - 1 < MOBILE_WIDTH
     },
-    resizeHandler () {
+    resizeHandler() {
       this.collapse = this.isMobile()
     }
   }

@@ -1,6 +1,6 @@
 import { routes } from '@/router/index.js'
 
-function routeMap (route) {
+function routeMap(route) {
   // for the root menu with no children
   if (!route.path && route.children && route.children[0]) {
     return {
@@ -17,7 +17,7 @@ function routeMap (route) {
   }
 }
 
-export function filterRoutes () {
+export function filterRoutes() {
   return routes && routes.filter(i => i.path !== '*').map(i => routeMap(i))
 }
 

@@ -13,7 +13,7 @@ export const routes = [
         path: '/dashboard',
         component: () => import('@/pages/dashboard/index'),
         name: 'dashboard',
-        meta: { title: '报表', icon: 's-data' }
+        meta: { title: '报表', icon: 's-marketing' }
       }
     ]
   },
@@ -49,9 +49,22 @@ export const routes = [
     ]
   },
   {
+    path: '/bigdata',
+    component: Layout,
+    meta: { title: '大数据', icon: 's-data' },
+    children: [
+      {
+        path: 'json',
+        component: () => import('@/pages/infinite-scroll/index'),
+        name: 'json',
+        meta: { title: '无限滚动列表', icon: 'd-caret' }
+      }
+    ]
+  },
+  {
     path: '/fun',
     component: Layout,
-    meta: { title: '小程序', icon: 'lollipop' },
+    meta: { title: '小程序', icon: 's-opportunity' },
     children: [
       {
         path: 'form_creator',

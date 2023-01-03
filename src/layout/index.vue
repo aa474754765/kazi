@@ -25,16 +25,16 @@ import SideBar from './SideBar'
 export default {
   name: 'Layout',
   components: { SideBar },
-  data () {
+  data() {
     return {
       title: 'KAZI'
     }
   },
   computed: {
-    key () {
+    key() {
       return this.$route.path
     },
-    pageName () {
+    pageName() {
       return this.$route.meta.title
     }
   }

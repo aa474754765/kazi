@@ -1,7 +1,5 @@
 <template>
-  <div>
-    this is the message board
-  </div>
+  <div>tableeeeeeee</div>
 </template>
 
 <script>

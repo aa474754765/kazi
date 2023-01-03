@@ -1,19 +1,21 @@
 <template>
   <div>
     <el-row>
-      <i :class="'el-icon-' + (action === 'create' ? 'minus' : 'plus')" @click="newClicked()"></i><span v-if="cardCount === 0">快来添加你的第一个纪念日吧！</span>
+      <i :class="'el-icon-' + (action === 'create' ? 'minus' : 'plus')" @click="newClicked()"></i><span
+        v-if="cardCount === 0">快来添加你的第一个纪念日吧！</span>
       <i :class="'el-icon-' + (inEditMode ? 'check' : 'edit')" @click="editClicked()"></i>
     </el-row>
     <div class="card-container">
       <div v-if="action" class="edit-form">
-        <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)" @close="action = '';reloadCards();inEditMode=false"></card-edit>
+        <card-edit :type="action" :formData="currentData" @create="createCard($event)" @update="updateCard($event)"
+          @close="action = ''; reloadCards(); inEditMode = false"></card-edit>
       </div>
       <el-row :gutter="32">
-        <draggable v-model="cards" chosen-class="chosen" force-fallback="true" group="people" animation="300" :disabled="!inEditMode"
-         @end="onDragEnd">
-            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" v-for="c in cards" :key="c.id">
-              <card :attr="c" :inEdit="inEditMode" @edit="editCard($event)" @remove="removeCard($event)"></card>
-            </el-col>
+        <draggable v-model="cards" chosen-class="chosen" force-fallback="true" group="people" animation="300"
+          :disabled="!inEditMode" @end="onDragEnd">
+          <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" v-for="c in cards" :key="c.id">
+            <card :attr="c" :inEdit="inEditMode" @edit="editCard($event)" @remove="removeCard($event)"></card>
+          </el-col>
         </draggable>
       </el-row>
     </div>
@@ -37,7 +39,7 @@ export default {
     CardEdit,
     draggable
   },
-  data () {
+  data() {
     return {
       action: '',
       cards: [],
@@ -45,16 +47,16 @@ export default {
       inEditMode: false
     }
   },
-  mounted () {
+  mounted() {
     this.reloadCards()
   },
   computed: {
-    cardCount () {
+    cardCount() {
       return this.cards.length
     }
   },
   methods: {
-    newClicked () {
+    newClicked() {
       this.action = this.action === 'create' ? '' : 'create'
       this.inEditMode = false
       this.currentData = {
@@ -66,32 +68,32 @@ export default {
         calculateType: false
       }
     },
-    editClicked () {
+    editClicked() {
       this.inEditMode = !this.inEditMode
       if (!this.inEditMode) {
         this.action = ''
       }
     },
-    editCard (data) {
+    editCard(data) {
       this.action = 'update'
       this.currentData = deepClone(data)
     },
-    createCard (data) {
+    createCard(data) {
       addArrayStorage(storageKey, data)
       this.reloadCards()
     },
-    updateCard (data) {
+    updateCard(data) {
       updateArrayStorage(storageKey, data.id, data)
       this.reloadCards()
     },
-    removeCard (data) {
+    removeCard(data) {
       deleteArrayStorage(storageKey, data.id)
       this.reloadCards()
     },
-    reloadCards () {
+    reloadCards() {
       this.cards = getStorage(storageKey) || []
     },
-    onDragEnd () {
+    onDragEnd() {
       setStorage(storageKey, this.cards)
     }
   }

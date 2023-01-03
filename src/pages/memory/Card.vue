@@ -22,12 +22,12 @@
 export default {
   name: '',
   props: ['attr', 'inEdit'],
-  data () {
+  data() {
     return {
     }
   },
   computed: {
-    day () {
+    day() {
       let result = 0
       // 计算过了多少天
       if (!this.attr.calculateType) {
@@ -45,10 +45,10 @@ export default {
   },
   methods: {
     // yyyy-mm-dd格式
-    getToday () {
+    getToday() {
       return `${new Date().getFullYear()}-${this.addZero(new Date().getMonth() + 1)}-${this.addZero(new Date().getDate())}`
     },
-    addZero (num) {
+    addZero(num) {
       return num < 10 ? ('0' + num) : num
     }
   }
