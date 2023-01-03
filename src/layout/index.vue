@@ -9,7 +9,8 @@
         <el-main>
           <el-card>
             <div slot="header">
-              <span>{{ pageName }}</span>
+              <span style="margin-right:16px">{{ pageName }}</span>
+              <span v-html="subTitle"></span>
             </div>
             <router-view :key="key" />
           </el-card>
@@ -36,6 +37,9 @@ export default {
     },
     pageName() {
       return this.$route.meta.title
+    },
+    subTitle() {
+      return this.$route.meta.subTitle
     }
   }
 }

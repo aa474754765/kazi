@@ -38,7 +38,7 @@ export const routes = [
         path: 'json',
         component: () => import('@/pages/json/index'),
         name: 'json',
-        meta: { title: 'Json 转换器', icon: 'basketball' }
+        meta: { title: 'Json 转换器', icon: 'basketball', subTitle: '<a href="https://github.com/leezng/vue-json-pretty" target="_blank">vue-json-pretty</a>' }
       },
       {
         path: 'code',
@@ -54,10 +54,16 @@ export const routes = [
     meta: { title: '大数据', icon: 's-data' },
     children: [
       {
-        path: 'json',
-        component: () => import('@/pages/infinite-scroll/index'),
-        name: 'json',
-        meta: { title: '无限滚动列表', icon: 'd-caret' }
+        path: 'infinite_scroll_table',
+        component: () => import('@/pages/infinite-scroll-table/index'),
+        name: 'infiniteScroll',
+        meta: { title: '表格无限滚动', icon: 'd-caret', subTitle: '<a href="https://github.com/yujinpan/el-table-infinite-scroll#vue2--element-ui" target="_blank">el-table-infinite-scroll</a>' }
+      },
+      {
+        path: 'infinite_scroll_list',
+        component: () => import('@/pages/infinite-scroll-list/index'),
+        name: 'infiniteScroll2',
+        meta: { title: '列表无限滚动', icon: 'sort' }
       }
     ]
   },
