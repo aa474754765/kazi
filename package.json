@@ -11,8 +11,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^1.2.2",
     "echarts": "^5.4.1",
     "element-ui": "^2.15.12",
+    "mockjs": "^1.1.0",
     "vue": "^2.5.2",
     "vue-json-pretty": "^1.9.3",
     "vue-router": "^3.0.1",
