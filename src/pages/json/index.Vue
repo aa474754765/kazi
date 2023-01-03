@@ -14,7 +14,7 @@
         </el-form>
       </el-col>
       <el-col :xs="24" :sm="12" v-if="jsonResult">
-        <vue-json-pretty height="432" :virtual="true" :showLine="true" :showIcon="true" :showLineNumber="true"
+        <vue-json-pretty :height="432" :virtual="true" :showLine="true" :showIcon="true" :showLineNumber="true"
           :data="jsonResult" />
       </el-col>
     </el-row>
@@ -40,6 +40,7 @@ export default {
       jsonResult: null,
       rules: {
         jsonText: [
+          { required: true, message: '请填入你的Json字符串', trigger: 'blur' },
           { validator: validateJson, message: 'Json格式不正确', trigger: 'change' }
         ]
       }
@@ -48,7 +49,7 @@ export default {
   methods: {
     transform() {
       this.$refs.form.validate((valid) => {
-        if (valid) {
+        if (this.form.jsonText && valid) {
           this.jsonResult = JSON.parse(this.form.jsonText)
         }
       })
