@@ -49,10 +49,16 @@ export const routes = [
     ]
   },
   {
-    path: '/bigdata',
+    path: '/data',
     component: Layout,
-    meta: { title: '大数据', icon: 's-data' },
+    meta: { title: '数据', icon: 's-data' },
     children: [
+      {
+        path: 'photos_lazy_loaded',
+        component: () => import('@/pages/photos-lazy-loaded/index'),
+        name: 'photosLazyLoaded',
+        meta: { title: '图片懒加载', icon: 'picture-outline', subTitle: '<a href="https://picsum.photos/" target="_blank">random photos</a>' }
+      },
       {
         path: 'infinite_scroll_table',
         component: () => import('@/pages/infinite-scroll-table/index'),

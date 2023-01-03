@@ -25,3 +25,15 @@ export function isJSON(str) {
   }
   return false
 }
+
+export function debounce(fn, time) {
+  let timer
+  return function() {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+    }, time)
+  }
+}
