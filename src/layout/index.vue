@@ -6,7 +6,7 @@
         <SideBar></SideBar>
       </el-aside>
       <el-container>
-        <el-main>
+        <el-main v-if="!fullScreen">
           <el-card>
             <div slot="header">
               <span style="margin-right:16px">{{ pageName }}</span>
@@ -15,6 +15,7 @@
             <router-view :key="key" />
           </el-card>
         </el-main>
+        <router-view v-else :key="key" />
       </el-container>
     </el-container>
   </el-container>
@@ -40,6 +41,9 @@ export default {
     },
     subTitle() {
       return this.$route.meta.subTitle
+    },
+    fullScreen() {
+      return this.$route.meta.full
     }
   }
 }

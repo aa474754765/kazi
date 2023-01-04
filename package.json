@@ -17,6 +17,7 @@
     "element-ui": "^2.15.12",
     "mockjs": "^1.1.0",
     "vue": "^2.5.2",
+    "vue-baidu-map": "^0.21.22",
     "vue-json-pretty": "^1.9.3",
     "vue-router": "^3.0.1",
     "vuedraggable": "^2.24.3"

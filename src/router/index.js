@@ -70,6 +70,12 @@ export const routes = [
         component: () => import('@/pages/infinite-scroll-list/index'),
         name: 'infiniteScroll2',
         meta: { title: '列表无限滚动', icon: 'sort' }
+      },
+      {
+        path: 'map',
+        component: () => import('@/pages/map/index'),
+        name: 'map',
+        meta: { title: '地图', icon: 'map-location', full: true }
       }
     ]
   },
