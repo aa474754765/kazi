@@ -2,6 +2,7 @@
 $blue: cornflowerblue;
 $red: #f56c6c;
 $pageColor: #f2f3f5;
+$regularTextColor: #606266;
 
 //header
 $headerHeight: 60px;
@@ -13,6 +14,7 @@ $sideBarColor: rgb(238, 241, 246);
   blue: $blue;
   red: $red;
   pageColor: $pageColor;
+  regularTextColor: $regularTextColor;
   headerHeight: $headerHeight;
   sideBarColor: $sideBarColor;
 }
