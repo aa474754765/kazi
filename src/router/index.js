@@ -76,6 +76,12 @@ export const routes = [
         component: () => import('@/pages/map/index'),
         name: 'map',
         meta: { title: '地图', icon: 'map-location', full: true }
+      },
+      {
+        path: 'card_list',
+        component: () => import('@/pages/card-list/index'),
+        name: 'cardList',
+        meta: { title: '卡片列表', icon: 's-grid', full: true }
       }
     ]
   },

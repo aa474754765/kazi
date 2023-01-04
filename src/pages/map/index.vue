@@ -65,7 +65,7 @@ export default {
 #map-container {
   position: relative;
   width: 100%;
-  height: calc(100vh - $headerHeight);
+  height: 100%;
 }
 
 .map {

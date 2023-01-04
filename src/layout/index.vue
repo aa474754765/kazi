@@ -15,7 +15,9 @@
             <router-view :key="key" />
           </el-card>
         </el-main>
-        <router-view v-else :key="key" />
+        <el-main class="no-padding" v-else>
+          <router-view :key="key" />
+        </el-main>
       </el-container>
     </el-container>
   </el-container>
@@ -66,5 +68,11 @@ export default {
 .el-aside {
   min-height: calc(100vh - #{$headerHeight});
   background-color: $sideBarColor;
+}
+
+.no-padding {
+  padding: 0;
+  width: 100%;
+  height: calc(100vh - #{$headerHeight});
 }
 </style>
