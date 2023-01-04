@@ -59,6 +59,10 @@ export default {
   height: $headerHeight;
 }
 
+.el-main {
+  background-color: $pageColor;
+}
+
 .el-aside {
   min-height: calc(100vh - #{$headerHeight});
   background-color: $sideBarColor;
