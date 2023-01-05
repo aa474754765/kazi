@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6" v-for="p in imgList" :key="p">
+    <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="6" v-for="p in imgList" :key="p">
       <el-card :body-style="{ padding: '0px' }">
         <img src="https://picsum.photos/200/300/?blur" :real-src="p" class="image">
       </el-card>
@@ -55,9 +55,19 @@ export default {
 
 </script>
 <style lang="scss" scoped>
+.el-card {
+  border-radius: 16px;
+}
 .image {
   width: 100%;
   height: 200px;
+  cursor: pointer;
+  vertical-align: bottom;
+  transition: 0.5s ease-in-out;
+}
+
+.image:hover {
+  transform: scale(1.2);
 }
 
 .el-col {
