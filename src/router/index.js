@@ -82,6 +82,12 @@ export const routes = [
         component: () => import('@/pages/card-list/index'),
         name: 'cardList',
         meta: { title: '卡片列表', icon: 's-grid', full: true }
+      },
+      {
+        path: 'communication',
+        component: () => import('@/pages/communication/Grandpa'),
+        name: 'communication',
+        meta: { title: '组件通信', icon: 'data-analysis' }
       }
     ]
   },
