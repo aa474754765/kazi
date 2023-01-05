@@ -72,6 +72,12 @@ export const routes = [
         meta: { title: '列表无限滚动', icon: 'sort' }
       },
       {
+        path: 'large_chart',
+        component: () => import('@/pages/large-chart/index'),
+        name: 'largeChart',
+        meta: { title: '大数据图表', icon: 'pie-chart', full: true }
+      },
+      {
         path: 'map',
         component: () => import('@/pages/map/index'),
         name: 'map',
