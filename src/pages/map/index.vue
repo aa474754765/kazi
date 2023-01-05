@@ -1,11 +1,13 @@
 <template>
-  <div id="map-container">
+  <div id="map-container" v-loading="loading" element-loading-background="rgba(0,0,0,0.1)">
     <baidu-map class="map" ak="MaolzgcBamBYiOotVV2bTgl68uhkgppn" :center="center" :zoom="zoom" :scroll-wheel-zoom="true"
       @ready="handler" @click="click">
       <div class="local-search">
-        <bm-local-search v-show="displaySearchPanel" class="search-result" :keyword="keyword" :auto-viewport="true"></bm-local-search>
-        <el-input class="search-input" placeholder="搜索地点" v-model="keyword">
-          <i class="el-input__icon" :class="'el-icon-' + (displaySearchPanel ? 'arrow-down' : 'arrow-up')" slot="suffix" @click="displaySearchPanel = !displaySearchPanel">
+        <bm-local-search v-show="displaySearchPanel" class="search-result" :keyword="keyword"
+          :auto-viewport="true"></bm-local-search>
+        <el-input class="search-input" placeholder="搜索地点" v-model="keyword" @input="displaySearchPanel = true">
+          <i class="el-input__icon" :class="'el-icon-' + (displaySearchPanel ? 'arrow-down' : 'arrow-up')" slot="suffix"
+            @click="displaySearchPanel = !displaySearchPanel">
           </i>
         </el-input>
       </div>
@@ -37,7 +39,8 @@ export default {
       center: { lng: 116.4, lat: 39.9 },
       zoom: 12,
       keyword: '',
-      displaySearchPanel: true
+      displaySearchPanel: true,
+      loading: true
     }
   },
   mounted() {
@@ -46,6 +49,7 @@ export default {
     handler({ BMap }) {
       const geolocation = new BMap.Geolocation()
       geolocation.getCurrentPosition((res) => {
+        this.loading = false
         this.center.lng = res.point.lng
         this.center.lat = res.point.lat
       })
