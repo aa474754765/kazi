@@ -116,6 +116,19 @@ export const routes = [
       }
     ]
   },
+  {
+    path: '/permission',
+    component: Layout,
+    meta: { title: '权限管理', icon: 'cpu' },
+    children: [
+      {
+        path: 'roles',
+        component: () => import('@/pages/roles/index'),
+        name: 'roles',
+        meta: { title: '角色管理', icon: 's-custom' }
+      }
+    ]
+  },
   { path: '*', redirect: '/dashboard' }
 ]
 

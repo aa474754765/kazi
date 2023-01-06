@@ -3,7 +3,7 @@
     <el-row>
       <section class="operation-panel">
         <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>新建产品</el-button>
-        <search-input v-model="filterText" @input="inputChange"></search-input>
+        <search-input v-model="filterText" @input="inputChange" placeholder="请输入产品名称"></search-input>
       </section>
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="(item, index) in _displayList" :key="index">
         <div class="card-item">

@@ -1,5 +1,5 @@
 <template>
-  <el-input placeholder="请输入产品名称" v-model="text" @input="input">
+  <el-input :placeholder="placeholder" v-model="text" @input="input">
     <i class="el-input__icon" :class="'el-icon-' + (text ? 'close' : 'search')" slot="suffix" @click="clear"></i>
   </el-input>
 </template>
@@ -7,7 +7,15 @@
 <script>
 export default {
   name: 'SearchInput',
-  props: ['value'],
+  props: {
+    value: {
+      type: String
+    },
+    placeholder: {
+      type: String,
+      default: '请输入'
+    }
+  },
   model: {
     prop: 'value',
     event: 'input'
