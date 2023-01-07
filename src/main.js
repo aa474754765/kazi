@@ -10,6 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './styles/global.scss'
 
 import './icons/index' // svg icon
+import './permission' // permission control
 
 Vue.config.productionTip = false
 

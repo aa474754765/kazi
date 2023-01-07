@@ -4,13 +4,34 @@ import Layout from '@/layout'
 
 Vue.use(Router)
 
-export const routes = [
+function filterRoutes(routes) {
+  const res = []
+
+  routes.forEach(route => {
+    const tmp = { ...route }
+    if (!tmp.requiredPermission) {
+      if (tmp.children) {
+        tmp.children = filterRoutes(tmp.children)
+      }
+      res.push(tmp)
+    }
+  })
+
+  return res
+}
+
+/**
+ * requiredPermission: true       if set true, item will not show in default(default is false)
+ */
+
+export const allRoutes = [
   {
-    path: '',
+    path: '/',
     component: Layout,
+    redirect: '/dashboard',
     children: [
       {
-        path: '/dashboard',
+        path: 'dashboard',
         component: () => import('@/pages/dashboard/index'),
         name: 'dashboard',
         meta: { title: '报表', icon: 's-marketing' }
@@ -18,11 +39,11 @@ export const routes = [
     ]
   },
   {
-    path: '',
+    path: '/message_board',
     component: Layout,
     children: [
       {
-        path: '/message_board',
+        path: 'index',
         component: () => import('@/pages/message-board/index'),
         name: 'messageBoard',
         meta: { title: '留言板', icon: 'edit-outline' }
@@ -75,12 +96,14 @@ export const routes = [
         path: 'large_chart',
         component: () => import('@/pages/large-chart/index'),
         name: 'largeChart',
+        requiredPermission: true,
         meta: { title: '大数据图表', icon: 'pie-chart', full: true }
       },
       {
         path: 'map',
         component: () => import('@/pages/map/index'),
         name: 'map',
+        requiredPermission: true,
         meta: { title: '地图', icon: 'map-location', full: true }
       },
       {
@@ -100,6 +123,7 @@ export const routes = [
   {
     path: '/fun',
     component: Layout,
+    requiredPermission: true,
     meta: { title: '小程序', icon: 's-opportunity' },
     children: [
       {
@@ -119,6 +143,7 @@ export const routes = [
   {
     path: '/permission',
     component: Layout,
+    requiredPermission: true,
     meta: { title: '权限管理', icon: 'cpu' },
     children: [
       {
@@ -129,9 +154,11 @@ export const routes = [
       }
     ]
   },
-  { path: '*', redirect: '/dashboard' }
+  { path: '*', redirect: '/dashboard', hidden: true }
 ]
 
+export const defaultRoutes = filterRoutes(allRoutes)
+
 export default new Router({
-  routes: routes
+  routes: defaultRoutes
 })

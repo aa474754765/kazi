@@ -76,7 +76,7 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.dialogVisible = false
-          this.$store.dispatch('permission/addRole', this.form.name)
+          this.$store.dispatch('user/addRole', this.form.name)
           this.$message({
             message: '新建成功',
             type: 'success'

@@ -2,15 +2,15 @@
   <el-row>
     <el-col :span="24">
       <el-menu :default-active="landingPath" class="nav-menu" :collapse="collapse" :collapse-transition="false">
-        <sidebar-item v-for="item in menuItems" :key="item.path" :item="item" :collapse="collapse" />
+        <sidebar-item v-for="item in permission_routes" :key="item.path" :item="item" :collapse="collapse" />
       </el-menu>
     </el-col>
   </el-row>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
-import { filterRoutes } from '@/router/utils.js'
 
 const MOBILE_WIDTH = 768
 
@@ -20,12 +20,10 @@ export default {
   },
   data() {
     return {
-      collapse: false,
-      routes: []
+      collapse: false
     }
   },
   beforeMount() {
-    this.routes = filterRoutes()
     this.resizeHandler()
     window.addEventListener('resize', this.resizeHandler)
   },
@@ -33,6 +31,9 @@ export default {
     window.removeEventListener('resize', this.resizeHandler)
   },
   computed: {
+    ...mapGetters([
+      'permission_routes'
+    ]),
     menuItems() {
       return this.routes.filter(i => !i.hidden)
     },

@@ -1,16 +1,42 @@
+import { allRoutes } from '@/router'
+
+function filterRoutes(routes, accessedRoutes) {
+  const res = []
+
+  routes.forEach(route => {
+    const tmp = { ...route }
+    if (!tmp.requiredPermission || accessedRoutes.includes(tmp.path)) {
+      if (tmp.children) {
+        tmp.children = filterRoutes(tmp.children, accessedRoutes)
+      }
+      res.push(tmp)
+    }
+  })
+
+  return res
+}
+
 const state = {
-  roles: ['Admin', 'Manager', 'Guest']
+  routes: []
 }
 
 const mutations = {
-  ADD_ROLE: (state, role) => {
-    state.roles = state.roles.concat(role)
+  SET_ROUTES: (state, routes) => {
+    state.routes = filterRoutes(allRoutes, routes)
   }
 }
 
 const actions = {
-  addRole({ commit }, role) {
-    commit('ADD_ROLE', role)
+  generateRoutes({ commit }, roleName) {
+    return new Promise(resolve => {
+      const accessedRoutes = (window.localStorage.getItem('role-' + roleName) || '').split(',').filter(i => i)
+      if (roleName === 'admin') {
+        accessedRoutes.push('/permission')
+      }
+      const routes = filterRoutes(allRoutes, accessedRoutes)
+      commit('SET_ROUTES', accessedRoutes)
+      resolve(routes)
+    })
   }
 }
 
