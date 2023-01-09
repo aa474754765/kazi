@@ -28,22 +28,23 @@ export const allRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [
       {
-        path: 'dashboard',
+        path: 'home',
         component: () => import('@/pages/dashboard/index'),
         name: 'dashboard',
-        meta: { title: '报表', icon: 's-marketing' }
+        meta: { title: '首页', icon: 's-home' }
       }
     ]
   },
   {
-    path: '/message_board',
+    path: '/board',
     component: Layout,
+    requiredPermission: true,
     children: [
       {
-        path: 'index',
+        path: 'message',
         component: () => import('@/pages/message-board/index'),
         name: 'messageBoard',
         meta: { title: '留言板', icon: 'edit-outline' }
@@ -151,10 +152,16 @@ export const allRoutes = [
         component: () => import('@/pages/roles/index'),
         name: 'roles',
         meta: { title: '角色管理', icon: 's-custom' }
+      },
+      {
+        path: 'pages',
+        component: () => import('@/pages/pages-management/index'),
+        name: 'pages',
+        meta: { title: '页面管理', icon: 'tickets' }
       }
     ]
   },
-  { path: '*', redirect: '/dashboard', hidden: true }
+  { path: '*', redirect: '/home', hidden: true }
 ]
 
 export const defaultRoutes = filterRoutes(allRoutes)

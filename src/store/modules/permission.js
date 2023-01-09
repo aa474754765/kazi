@@ -1,13 +1,23 @@
-import { allRoutes } from '@/router'
+import router, { allRoutes } from '@/router'
+import { getRolePath } from '@/router/utils'
+import Router from 'vue-router'
 
-function filterRoutes(routes, accessedRoutes) {
+function pathInChildern(route, accessPaths) {
+  let result = false
+  if (route.children) {
+    result = route.children.some(item => accessPaths.includes(item.path) || pathInChildern(item, accessPaths))
+  }
+  return result
+}
+
+function filterRoutes(routes, accessPaths) {
   const res = []
 
   routes.forEach(route => {
     const tmp = { ...route }
-    if (!tmp.requiredPermission || accessedRoutes.includes(tmp.path)) {
+    if (accessPaths.includes(tmp.path) || pathInChildern(tmp, accessPaths)) {
       if (tmp.children) {
-        tmp.children = filterRoutes(tmp.children, accessedRoutes)
+        tmp.children = filterRoutes(tmp.children, accessPaths)
       }
       res.push(tmp)
     }
@@ -17,24 +27,27 @@ function filterRoutes(routes, accessedRoutes) {
 }
 
 const state = {
-  routes: []
+  permission_routes: [],
+  access_paths: []
 }
 
 const mutations = {
   SET_ROUTES: (state, routes) => {
-    state.routes = filterRoutes(allRoutes, routes)
+    state.permission_routes = routes
   }
 }
 
 const actions = {
   generateRoutes({ commit }, roleName) {
     return new Promise(resolve => {
-      const accessedRoutes = (window.localStorage.getItem('role-' + roleName) || '').split(',').filter(i => i)
-      if (roleName === 'admin') {
-        accessedRoutes.push('/permission')
-      }
-      const routes = filterRoutes(allRoutes, accessedRoutes)
-      commit('SET_ROUTES', accessedRoutes)
+      const accessPaths = getRolePath(roleName)
+      const routes = filterRoutes(allRoutes, accessPaths)
+      // refresh the routes based on the routes by role
+      // eslint-disable-next-line new-cap
+      router.matcher = new Router({
+        routes: routes
+      }).matcher
+      commit('SET_ROUTES', routes)
       resolve(routes)
     })
   }
