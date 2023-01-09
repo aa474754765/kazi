@@ -12,42 +12,27 @@
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
 
-const MOBILE_WIDTH = 768
-
 export default {
   components: {
     SidebarItem
   },
   data() {
     return {
-      collapse: false
     }
-  },
-  beforeMount() {
-    this.resizeHandler()
-    window.addEventListener('resize', this.resizeHandler)
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.resizeHandler)
   },
   computed: {
     ...mapGetters([
-      'permission_routes'
+      'permission_routes',
+      'device'
     ]),
+    collapse() {
+      return this.device === 'mobile'
+    },
     menuItems() {
       return this.routes.filter(i => !i.hidden)
     },
     landingPath() {
       return this.$route.path
-    }
-  },
-  methods: {
-    isMobile() {
-      const rect = document.body.getBoundingClientRect()
-      return rect.width - 1 < MOBILE_WIDTH
-    },
-    resizeHandler() {
-      this.collapse = this.isMobile()
     }
   }
 }

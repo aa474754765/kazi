@@ -10,7 +10,7 @@
         <el-button size="small" type="primary" plain @click="save">保存</el-button>
       </el-col>
       <el-col :span="18">
-        <el-tree :span="12" :data="data" show-checkbox default-expand-all node-key="path" ref="tree" highlight-current
+        <el-tree :span="12" :data="data" show-checkbox  node-key="path" ref="tree" highlight-current
           :props="defaultProps" :default-checked-keys="checkedKeys">
         </el-tree>
       </el-col>

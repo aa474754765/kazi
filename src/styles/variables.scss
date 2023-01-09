@@ -1,3 +1,5 @@
+@import "~@/styles/colors.scss";
+
 // base color
 $blue: cornflowerblue;
 $red: #f56c6c;
@@ -5,16 +7,7 @@ $pageColor: #f2f3f5;
 $regularTextColor: #606266;
 
 //header
-$headerHeight: 60px;
+$headerHeight: 64px;
 
-//sideBat
-$sideBarColor: rgb(238, 241, 246);
-
-:export {
-  blue: $blue;
-  red: $red;
-  pageColor: $pageColor;
-  regularTextColor: $regularTextColor;
-  headerHeight: $headerHeight;
-  sideBarColor: $sideBarColor;
-}
+//sideBar
+$sideBarColor: $color-gray4;

@@ -2,10 +2,10 @@
   <el-container>
     <el-header>{{ title }}</el-header>
     <el-container>
-      <el-aside width="200px">
-        <SideBar></SideBar>
+      <el-aside :width="device === 'mobile' ? '64px' : '200px'">
+        <side-bar></side-bar>
       </el-aside>
-      <el-container>
+      <el-container class="main-contaner">
         <el-main v-if="!fullScreen">
           <el-card>
             <div slot="header">
@@ -24,17 +24,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import ResizeHandler from './ResizeHandler'
 import SideBar from './SideBar'
 
 export default {
   name: 'Layout',
   components: { SideBar },
+  mixins: [ResizeHandler],
   data() {
     return {
       title: 'KAZI'
     }
   },
   computed: {
+    ...mapGetters([
+      'device'
+    ]),
     key() {
       return this.$route.path
     },
@@ -55,10 +61,14 @@ export default {
 @import "~@/styles/variables.scss";
 
 .el-header {
-  background-color: cornflowerblue;
+  background-color: $blue;
   text-align: center;
   line-height: 60px;
   height: $headerHeight;
+}
+
+.main-contaner {
+  max-height: calc(100vh - #{$headerHeight});
 }
 
 .el-main {
@@ -66,8 +76,9 @@ export default {
 }
 
 .el-aside {
-  min-height: calc(100vh - #{$headerHeight});
+  height: calc(100vh - #{$headerHeight});
   background-color: $sideBarColor;
+  overflow-x: hidden;
 }
 
 .no-padding {

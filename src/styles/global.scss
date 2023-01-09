@@ -1,5 +1,27 @@
 @import "~@/styles/variables.scss";
+@import "~@/styles/colors.scss";
 
 .text-text-color-regular {
-  color: $regularTextColor
+  color: $regularTextColor;
+}
+
+section,
+main,
+div,
+aside {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-gray2;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #ffffff;
+  }
 }
