@@ -25,7 +25,7 @@ export default {
   },
   mounted() {
     this.imgElements = Array.from(document.getElementsByTagName('img'))
-    window.addEventListener('scroll', this.onScroll())
+    window.addEventListener('scroll', this.onScroll(), true)
     this.lazyLoaded()
   },
   beforeDestroy() {
@@ -37,7 +37,7 @@ export default {
     },
     lazyLoaded() {
       let viewHeight = document.documentElement.clientHeight
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      let scrollTop = document.getElementsByClassName('el-main')[0].scrollTop
       let length = this.imgElements.length
 
       // eslint-disable-next-line no-trailing-spaces
