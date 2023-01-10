@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-row>
-      <el-button type="primary" @click="transform">格式化</el-button>
-      <el-button @click="clear">清空</el-button>
+      <el-button type="primary" @click="transform">{{ $t('button.formatted') }}</el-button>
+      <el-button @click="clear">{{ $t('button.clear') }}</el-button>
     </el-row>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="jsonResult ? 12 : 24">
         <el-form ref="form" :model="form" :rules="rules">
           <el-form-item label="" prop="jsonText">
-            <el-input type="textarea" :rows="20" placeholder="填入你的Json字符串" v-model="form.jsonText">
+            <el-input type="textarea" :rows="20" :placeholder="$t('form.enter_your_json')" v-model="form.jsonText">
             </el-input>
           </el-form-item>
         </el-form>
@@ -40,8 +40,8 @@ export default {
       jsonResult: null,
       rules: {
         jsonText: [
-          { required: true, message: '请填入你的Json字符串', trigger: 'blur' },
-          { validator: validateJson, message: 'Json格式不正确', trigger: 'change' }
+          { required: true, message: this.$t('form.please_enter_your_json'), trigger: 'blur' },
+          { validator: validateJson, message: this.$t('form.wrong_json'), trigger: 'change' }
         ]
       }
     }

@@ -2,8 +2,10 @@
   <div>
     <el-row>
       <section class="operation-panel">
-        <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>新建产品</el-button>
-        <search-input v-model="filterText" @input="inputChange" placeholder="请输入产品名称"></search-input>
+        <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>{{
+          $t(`form.create_product`)
+        }}</el-button>
+        <search-input v-model="filterText" @input="inputChange" :placeholder="$t(`form.enter_product_name`)"></search-input>
       </section>
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="(item, index) in _displayList" :key="index">
         <div class="card-item">
@@ -12,12 +14,14 @@
               <svg-icon :icon-class="item.icon"></svg-icon>
             </div>
             <div class="card-item-title-operation">
-              <el-tag :type="item.status ? 'success' : 'info'">{{ item.status ? '已启用' : '已停用' }}</el-tag>
+              <el-tag :type="item.status ? 'success' : 'info'">{{
+                item.status ? $t(`form.available`) : $t(`form.unavailable`)
+              }}</el-tag>
               <el-dropdown trigger="click">
                 <i class="dropdown-icon el-icon-more"></i>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item @click.native="edit(index)">管理</el-dropdown-item>
-                  <el-dropdown-item @click.native="remove">删除</el-dropdown-item>
+                  <el-dropdown-item @click.native="edit(index)">{{ $t(`button.manage`) }}</el-dropdown-item>
+                  <el-dropdown-item @click.native="remove">{{ $t(`button.delete`) }}</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -33,24 +37,25 @@
         :total="list.length">
       </el-pagination>
     </div>
-    <el-dialog :title="editMode === 'create' ? '新建产品' : '编辑产品'" :visible.sync="dialogVisible" width="50%">
+    <el-dialog :title="editMode === 'create' ? $t(`form.create_product`) : $t(`form.edit_product`)"
+      :visible.sync="dialogVisible" width="50%">
       <el-form :model="form" :rules="rules" ref="form" label-width="80px">
-        <el-form-item label="名称" prop="name">
+        <el-form-item :label="$t(`form.name`)" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
-        <el-form-item label="状态">
+        <el-form-item :label="$t(`form.status`)">
           <el-radio-group v-model="form.status">
-            <el-radio :label="false">已停用</el-radio>
-            <el-radio :label="true">已启用</el-radio>
+            <el-radio :label="false">{{ $t(`form.unavailable`) }}</el-radio>
+            <el-radio :label="true">{{ $t(`form.available`) }}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="描述">
+        <el-form-item :label="$t(`form.desc`)">
           <el-input type="textarea" :rows="3" v-model="form.desc"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button size="small" @click="dialogVisible = false">取 消</el-button>
-        <el-button size="small" type="primary" @click="submit">确 定</el-button>
+        <el-button size="small" @click="dialogVisible = false">{{ $t(`button.cancel`) }}</el-button>
+        <el-button size="small" type="primary" @click="submit">{{ $t(`button.confirm`) }}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -82,7 +87,7 @@ export default {
       rules: {
         name: [
           {
-            required: true, message: '不能为空', trigger: 'blur'
+            required: true, message: this.$t(`form.null`), trigger: 'blur'
           }
         ]
       }
@@ -135,19 +140,19 @@ export default {
         if (valid) {
           this.dialogVisible = false
           this.$message({
-            message: this.editMode === 'create' ? '新建成功' : '保存成功',
+            message: this.editMode === 'create' ? this.$t(`message.create_success`) : this.$t(`message.save_success`),
             type: 'success'
           })
         }
       })
     },
     remove() {
-      this.$alert('确定删除吗', '提示', {
-        confirmButtonText: '确定',
+      this.$alert(this.$t(`message.confirm_delete`), this.$t(`message.info`), {
+        confirmButtonText: this.$t(`button.confirm`),
         callback: () => {
           this.$message({
             type: 'info',
-            message: '删除成功'
+            message: this.$t(`message.delete_success`)
           })
         }
       })

@@ -2,7 +2,7 @@
   <div>
     <el-row>
       <i :class="'el-icon-' + (action === 'create' ? 'minus' : 'plus')" @click="newClicked()"></i><span
-        v-if="cardCount === 0">快来添加你的第一个纪念日吧！</span>
+        v-if="cardCount === 0">{{ $t('page.create_your_day') }}</span>
       <i :class="'el-icon-' + (inEditMode ? 'check' : 'edit')" @click="editClicked()"></i>
     </el-row>
     <div class="card-container">
@@ -87,21 +87,21 @@ export default {
       this.reloadCards()
     },
     removeCard(data) {
-      this.$confirm('此操作将删除纪念日, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm(this.$t(`message.confirm_delete_days`), this.$t(`message.info`), {
+        confirmButtonText: this.$t(`button.confirm`),
+        cancelButtonText: this.$t(`button.cancel`),
         type: 'warning'
       }).then(() => {
         deleteArrayStorage(storageKey, data.id)
         this.reloadCards()
         this.$message({
           type: 'success',
-          message: '删除成功!'
+          message: this.$t(`message.delete_success`)
         })
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: this.$t(`message.delete_cancel`)
         })
       })
     },

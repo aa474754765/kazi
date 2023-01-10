@@ -1,13 +1,13 @@
 <template>
   <div>
-    <el-input type="textarea" :rows="5" placeholder="请输入你要解码/编码的Url" v-model="text">
+    <el-input type="textarea" :rows="5" :placeholder="$t('form.enter_your_url')" v-model="text">
     </el-input>
     <el-row>
-      <el-button type="primary" @click="encode">UrlEncode编码</el-button>
-      <el-button type="primary" @click="decode">UrlDecode解码</el-button>
-      <el-button type="success" @click="reset">清空</el-button>
+      <el-button type="primary" @click="encode">{{ $t('button.encode')}}</el-button>
+      <el-button type="primary" @click="decode">{{ $t('button.decode')}}</el-button>
+      <el-button type="success" @click="reset">{{ $t('button.clear')}}</el-button>
     </el-row>
-    <el-input type="textarea" :rows="5" placeholder="转换后的地址" v-model="result">
+    <el-input type="textarea" :rows="5" :placeholder="$t('page.address_transfomed')" v-model="result">
     </el-input>
   </div>
 </template>

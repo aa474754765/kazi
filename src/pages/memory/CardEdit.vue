@@ -1,42 +1,42 @@
 <template>
   <el-form ref="form" :model="form" :rules="rules" label-width="60px" size="mini" class="card-edit">
-    <el-form-item label="名称" prop="name">
+    <el-form-item :label="$t('form.name')" prop="name">
       <el-input v-model="form.name"></el-input>
     </el-form-item>
-    <el-form-item label="日期" prop="date">
+    <el-form-item :label="$t('form.date')" prop="date">
       <el-date-picker v-model="form.date" type="date" value-format="yyyy-MM-dd"></el-date-picker>
     </el-form-item>
-    <el-form-item label="分类" prop="type">
-      <el-select v-model="form.type">
-        <el-option key="1" label="重要日期" value="重要日期"></el-option>
-        <el-option key="2" label="生活" value="生活"></el-option>
-        <el-option key="3" label="学习" value="学习"></el-option>
-        <el-option key="4" label="爱情" value="爱情"></el-option>
+    <el-form-item :label="$t('form.type')" prop="type">
+      <el-select v-model="form.type" :placeholder="$t('form.please_select')">
+        <el-option key="1" :label="$t('form.important_day')" :value="$t('form.important_day')"></el-option>
+        <el-option key="2" :label="$t('form.live')" :value="$t('form.live')"></el-option>
+        <el-option key="3" :label="$t('form.study')" :value="$t('form.study')"></el-option>
+        <el-option key="4" :label="$t('form.love')" :value="$t('form.love')"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="计算方式">
-      <el-switch v-model="form.calculateType" active-text="剩余" inactive-text="过去"></el-switch>
+    <el-form-item :label="$t('form.caculate_type')">
+      <el-switch v-model="form.calculateType" :active-text="$t('form.left_long')" :inactive-text="$t('form.pass_long')"></el-switch>
     </el-form-item>
-    <el-form-item label="背景">
+    <el-form-item :label="$t('form.background')">
       <el-popover trigger="click" ref="popoverRef" popper-class="card-popper">
         <div class="gradient-item">
           <div :style="{ 'background-image': 'linear-gradient(' + item + ')' }" v-for="(item, index) in gradients"
             :key="index" @click="selectBackground(item)"></div>
         </div>
         <div slot="reference">
-          <el-button v-if="!form.background">选择</el-button>
+          <el-button v-if="!form.background">{{ $t('button.select') }}</el-button>
           <div v-else
             :style="{ 'background-image': 'linear-gradient(' + form.background + ')', width: '80px', height: '40px', cursor: 'pointer' }">
           </div>
         </div>
       </el-popover>
     </el-form-item>
-    <el-form-item label="文字颜色">
+    <el-form-item :label="$t('form.text_color')">
       <el-color-picker v-model="form.textColor"></el-color-picker>
     </el-form-item>
     <div class="btn-line">
-      <el-button size="mini" type="primary" @click="onSubmit">{{ type === 'create' ? '立即添加' : '修改' }}</el-button>
-      <el-button size="mini" @click="$emit('close')">关闭</el-button>
+      <el-button size="mini" type="primary" @click="onSubmit">{{ type === 'create' ? $t('button.create') : $t('button.update') }}</el-button>
+      <el-button size="mini" @click="$emit('close')">{{ $t('button.close') }}</el-button>
     </div>
   </el-form>
 </template>
@@ -65,9 +65,9 @@ export default {
         '0deg, rgba(255, 0, 4, 0.83), rgba(255, 0, 13, 0.22)'
       ],
       rules: {
-        name: [{ required: true, message: '请输入名称', trigger: 'change' }],
-        date: [{ required: true, message: '请选择日期', trigger: 'change' }],
-        type: [{ required: true, message: '请选择分类', trigger: 'change' }]
+        name: [{ required: true, message: this.$t('form.enter_name'), trigger: 'change' }],
+        date: [{ required: true, message: this.$t('form.enter_date'), trigger: 'change' }],
+        type: [{ required: true, message: this.$t('form.enter_type'), trigger: 'change' }]
       }
     }
   },

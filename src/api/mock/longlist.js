@@ -3,10 +3,10 @@ const Mock = require('mockjs')
 const users = Mock.mock({
   'array|500': [
     {
-      'name': '@cname',
-      'sex|1': ['男', '女'],
+      'name': '@name',
+      'sex|1': ['male', 'female'],
       'date': '@date(yyyy-MM-dd)',
-      'address': '@county(true)',
+      'address': '@email',
       'zip': '@zip'
     }
   ]

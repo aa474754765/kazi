@@ -26,6 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { i18nTitle } from '@/router/utils'
 import ResizeHandler from './ResizeHandler'
 import SideBar from './SideBar'
 import PageHeader from './Header'
@@ -49,7 +50,7 @@ export default {
       return this.$route.path
     },
     pageName() {
-      return this.$route.meta.title
+      return i18nTitle.call(this, this.$route, this.$route.meta.title)
     },
     subTitle() {
       return this.$route.meta.subTitle

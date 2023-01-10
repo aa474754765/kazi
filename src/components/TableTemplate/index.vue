@@ -2,7 +2,7 @@
   <div>
     <el-row>
       <section class="operation-panel">
-        <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>新建</el-button>
+        <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>{{ $t(`button.create`) }}</el-button>
       </section>
     </el-row>
     <el-row class="table-container">
@@ -12,8 +12,8 @@
         </el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
-            <el-button size="small" type="success" @click="edit(scope.row)">编辑</el-button>
-            <el-button size="small" type="danger" @click="remove(scope.row)">删除</el-button>
+            <el-button size="small" type="success" @click="edit(scope.row)">{{ $t(`button.edit`) }}</el-button>
+            <el-button size="small" type="danger" @click="remove(scope.row)">{{ $t(`button.delete`) }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -50,7 +50,7 @@ export default {
       rules: {
         name: [
           {
-            required: true, message: '不能为空', trigger: 'blur'
+            required: true, message: this.$t(`form.null`), trigger: 'blur'
           }
         ]
       },
@@ -91,19 +91,19 @@ export default {
         if (valid) {
           this.dialogVisible = false
           this.$message({
-            message: this.editMode === 'create' ? '新建成功' : '保存成功',
+            message: this.editMode === 'create' ? this.$t(`message.create_success`) : this.$t(`message.save_success`),
             type: 'success'
           })
         }
       })
     },
     remove() {
-      this.$alert('确定删除吗', '提示', {
-        confirmButtonText: '确定',
+      this.$alert(this.$t(`message.confirm_delete`), this.$t(`message.info`), {
+        confirmButtonText: this.$t(`button.confirm`),
         callback: () => {
           this.$message({
             type: 'info',
-            message: '删除成功'
+            message: this.$t(`message.delete_success`)
           })
         }
       })

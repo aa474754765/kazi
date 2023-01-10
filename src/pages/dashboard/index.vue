@@ -3,11 +3,11 @@
     <el-col :span="16">
       <el-row :gutter="20">
         <el-col :span="12">
-          <kpi-item score="12,325,131" backgroundColor="cadetblue" icon="sell" title="销售额" trendText="+ 2.8%"
+          <kpi-item score="12,325,131" backgroundColor="cadetblue" icon="sell" :title="$t('chart.sales_count')" trendText="+ 2.8%"
             targetText="20,000,000"></kpi-item>
         </el-col>
         <el-col :span="12">
-          <kpi-item score="210" backgroundColor="violet" title="客户" trendText="- 11.2%"></kpi-item>
+          <kpi-item score="210" backgroundColor="violet" :title="$t('chart.client')" trendText="- 11.2%"></kpi-item>
         </el-col>
       </el-row>
       <statistic></statistic>

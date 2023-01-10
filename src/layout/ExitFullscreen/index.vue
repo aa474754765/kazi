@@ -1,7 +1,7 @@
 <template>
   <div class="exit-fullscreen" @click="exit">
     <svg-icon icon-class="exit-fullscreen"></svg-icon>
-    <span>退出全屏</span>
+    <span>{{ $t('menu.exit_fullScreen') }}</span>
   </div>
 </template>
 

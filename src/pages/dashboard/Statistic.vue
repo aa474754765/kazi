@@ -3,17 +3,17 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <div>
-          <el-statistic group-separator="," :value="value1" title="总订单量"></el-statistic>
+          <el-statistic group-separator="," :value="value1" :title="$t('chart.total_orders')"></el-statistic>
         </div>
       </el-col>
       <el-col :span="6">
         <div>
-          <el-statistic group-separator="," :value="value2" title="待处理"></el-statistic>
+          <el-statistic group-separator="," :value="value2" :title="$t('chart.pending_orders')"></el-statistic>
         </div>
       </el-col>
       <el-col :span="6">
         <div>
-          <el-statistic group-separator="," :value="value1" title="异常">
+          <el-statistic group-separator="," :value="value1" :title="$t('chart.unusual_orders')">
             <template slot="prefix">
               <i class="el-icon-s-flag" style="color: red"></i>
             </template>
@@ -23,7 +23,7 @@
       </el-col>
       <el-col :span="6">
         <div>
-          <el-statistic group-separator="," :value="value4" title="反馈"></el-statistic>
+          <el-statistic group-separator="," :value="value4" :title="$t('chart.feedback')"></el-statistic>
         </div>
       </el-col>
     </el-row>

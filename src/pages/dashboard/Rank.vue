@@ -1,68 +1,69 @@
 <template>
   <div>
-    <header>销售排行榜</header>
+    <header>{{ $t('chart.title_5') }}</header>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column type="index">
       </el-table-column>
-      <el-table-column prop="name" label="姓名">
+      <el-table-column prop="name" :label="$t('chart.name')">
       </el-table-column>
-      <el-table-column prop="score" label="销售量">
+      <el-table-column prop="score" :label="$t('chart.sales_count')">
       </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       tableData: [
         {
-          name: '张三',
+          name: 'Daniel Williams',
           score: '1024'
         },
         {
-          name: '胡歌',
+          name: 'Steven Lopez',
           score: '868'
         },
         {
-          name: '李大伯',
+          name: 'Paul Moore',
           score: '861'
         },
         {
-          name: '张翠萍',
+          name: 'Jessica Jackson',
           score: '700'
         },
         {
-          name: '郭小川',
+          name: 'Robert Lewis',
           score: '698'
         },
         {
-          name: '翟志刚',
+          name: 'Brian White',
           score: '478'
         },
         {
-          name: '黄晓霞',
+          name: 'Charles Hall',
           score: '470'
         },
         {
-          name: '孙怡',
+          name: 'Carol Wilson',
           score: '425'
         },
         {
-          name: '王一明',
+          name: 'Brenda Wilson',
           score: '421'
         },
         {
-          name: '唐诗婷',
+          name: 'Kevin Walker',
           score: '378'
         },
         {
-          name: '刘伟',
+          name: 'Mary Garcia',
           score: '356'
         },
         {
-          name: '莫菜心',
+          name: 'Margaret Young',
           score: '228'
         },
         {
@@ -70,11 +71,11 @@ export default {
           score: '212'
         },
         {
-          name: '陈塘关',
+          name: 'Scott White',
           score: '210'
         },
         {
-          name: '刘小峰',
+          name: 'Betty Lee',
           score: '198'
         }
       ]

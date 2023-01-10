@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-tag>为每个角色分配不同的页面权限吧！</el-tag>
+    <el-tag>{{ $t('page.role_assign_text') }}</el-tag>
     <el-row :gutter="32">
       <el-col :span="6">
-        <el-select :span="12" v-model="selectedRole" placeholder="请选择角色" @change="changeRole">
+        <el-select :span="12" v-model="selectedRole" :placeholder="$t('form.select_role')" @change="changeRole">
           <el-option v-for="item in roles" :key="item" :label="item" :value="item">
           </el-option>
         </el-select>
-        <el-button size="small" type="primary" plain @click="save">保存</el-button>
+        <el-button size="small" type="primary" plain @click="save">{{ $t('button.save') }}</el-button>
       </el-col>
       <el-col :span="18">
-        <el-tree :span="12" :data="data" show-checkbox  node-key="path" ref="tree" highlight-current
+        <el-tree :span="12" :data="data" show-checkbox node-key="path" ref="tree" highlight-current
           :props="defaultProps" :default-checked-keys="checkedKeys">
         </el-tree>
       </el-col>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { getRolePath } from '@/router/utils'
+import { getRolePath, i18nTitle } from '@/router/utils'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -52,7 +52,7 @@ export default {
     save() {
       window.localStorage.setItem('role-' + this.selectedRole, this.$refs.tree.getCheckedKeys().join(','))
       this.$message({
-        message: '保存成功',
+        message: this.$t(`message.save_success`),
         type: 'success'
       })
       if (this.selectedRole === this.currentRole) {
@@ -66,13 +66,13 @@ export default {
       const result = {
         path: route.path,
         children: [],
-        label: route.meta && route.meta.title,
+        label: i18nTitle.call(this, route, route.meta && route.meta.title),
         requiredPermission: route.requiredPermission,
         disabled: this.selectedRole === 'admin' && route.path === 'pages'
       }
       if (!route.meta && route.children && route.children.length === 1) {
         result.path = route.children[0].path
-        result.label = route.children[0].meta.title
+        result.label = i18nTitle.call(this, route, route.children[0].meta.title)
         result.requiredPermission = route.children[0].requiredPermission
         result.disabled = route.children[0].path === 'home'
       } else if (route.children) {

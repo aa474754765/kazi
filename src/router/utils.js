@@ -22,3 +22,12 @@ export function getRolePath(roleName) {
   iteratorRoute(allRoutes, paths)
   return paths
 }
+
+export function i18nTitle(route, replaceTitle) {
+  // regexp, for get the last path, /a/n --> n, /a --> a, /a/b/c --> c
+  const name = `${route.path}`.replace(/(\w*\/)*(?=\w*$)/, '') || 'home'
+  if (this.$te(`menu.${name}`)) {
+    return this.$t(`menu.${name}`)
+  }
+  return (route.meta && route.meta.title) || replaceTitle
+}

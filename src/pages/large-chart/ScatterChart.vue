@@ -54,7 +54,7 @@ export default {
       }
       const options = {
         title: {
-          text: '总人口散点图',
+          text: this.$t('chart.title_3'),
           left: 'center',
           top: 0
         },
@@ -62,7 +62,7 @@ export default {
           scale: true
         },
         yAxis: {
-          name: '单位：万',
+          name: this.$t('chart.title_3_unit'),
           scale: true,
           axisLabel: {
             formatter: function(value) {

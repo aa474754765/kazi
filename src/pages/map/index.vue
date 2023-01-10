@@ -5,7 +5,7 @@
       <div class="local-search">
         <bm-local-search v-show="displaySearchPanel" class="search-result" :keyword="keyword"
           :auto-viewport="true"></bm-local-search>
-        <el-input class="search-input" placeholder="搜索地点" v-model="keyword" @input="displaySearchPanel = true">
+        <el-input class="search-input" :placeholder="$t('form.search_point')" v-model="keyword" @input="displaySearchPanel = true">
           <i class="el-input__icon" :class="'el-icon-' + (displaySearchPanel ? 'arrow-down' : 'arrow-up')" slot="suffix"
             @click="displaySearchPanel = !displaySearchPanel">
           </i>

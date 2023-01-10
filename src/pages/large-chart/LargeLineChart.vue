@@ -62,7 +62,7 @@ export default {
       this.chart.setOption(
         {
           title: {
-            text: '常住人口预测表'
+            text: this.$t('chart.title_1')
           },
           tooltip: {
             trigger: 'axis'

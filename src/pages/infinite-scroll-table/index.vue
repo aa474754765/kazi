@@ -3,10 +3,10 @@
     element-loading-background="rgba(0, 0, 0, 0)" :data="displayData" highlight-current-row :height="tableHeight"
     :max-height="tableHeight" v-el-table-infinite-scroll="load" infinite-scroll-disabled="disabled">
     <el-table-column type="index"></el-table-column>
-    <el-table-column property="sex" label="性别" width="80" align="center"></el-table-column>
-    <el-table-column property="name" label="姓名" width="180" align="center"></el-table-column>
-    <el-table-column property="date" label="出生日期" width="180" align="center"></el-table-column>
-    <el-table-column label="地址" align="center">
+    <el-table-column property="sex" :label="$t('chart.sex')" width="80" align="center"></el-table-column>
+    <el-table-column property="name" :label="$t('chart.name')" width="180" align="center"></el-table-column>
+    <el-table-column property="date" :label="$t('chart.birthday')" width="180" align="center"></el-table-column>
+    <el-table-column :label="$t('chart.email')" align="center">
       <template slot-scope="scope">
         <span>{{ scope.row.address.replaceAll(' ', '') }}</span>
       </template>

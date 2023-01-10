@@ -1,6 +1,7 @@
 const state = {
   device: 'desktop',
-  fullSrceen: false
+  fullSrceen: false,
+  language: ''
 }
 
 const mutations = {
@@ -9,6 +10,9 @@ const mutations = {
   },
   TOGGLE_SCREEN_STATUS: (state) => {
     state.fullSrceen = !state.fullSrceen
+  },
+  CHANGE_LANGUAGE: (state, language) => {
+    state.language = language
   }
 }
 
@@ -18,6 +22,9 @@ const actions = {
   },
   toggleScreenStatus({ commit }) {
     commit('TOGGLE_SCREEN_STATUS')
+  },
+  changeLanguage({ commit }, language) {
+    commit('CHANGE_LANGUAGE', language)
   }
 }
 

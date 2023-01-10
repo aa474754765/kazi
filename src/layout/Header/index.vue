@@ -5,15 +5,18 @@
       <ul>
         <li>
           <router-link to="/">
-            <span>首页</span>
+            <span>{{ $t('menu.home') }}</span>
           </router-link>
         </li>
       </ul>
     </div>
     <ul class="header-right">
-      <li @click="setToFullContent"><svg-icon icon-class="fullscreen"></svg-icon><span v-if="showText">大屏</span></li>
-      <li><svg-icon icon-class="message"></svg-icon><span v-if="showText">消息</span></li>
-      <li><svg-icon icon-class="international"></svg-icon><span v-if="showText">语言</span></li>
+      <li @click="setToFullContent"><svg-icon icon-class="fullscreen"></svg-icon><span v-if="showText">{{ $t('menu.fullScreen') }}</span></li>
+      <li><svg-icon icon-class="message"></svg-icon><span v-if="showText">{{ $t('menu.message') }}</span></li>
+      <el-popover ref="language" :open-delay="400" placement="bottom" trigger="hover"  popper-class="li-popper">
+        <language @close="$refs.language.doClose()"></language>
+        <li slot="reference"><svg-icon icon-class="international"></svg-icon><span v-if="showText">{{ $t('menu.language') }}</span></li>
+      </el-popover>
       <li><span><el-avatar :size="showText ? 'medium' : 'small'" :src="url"></el-avatar></span>
       </li>
     </ul>
@@ -22,8 +25,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Language from './Language.vue'
+
 export default {
   name: '',
+  components: {
+    Language
+  },
   data() {
     return {
       title: '',
@@ -73,6 +81,7 @@ ul {
 
   li {
     display: flex;
+    height: 36px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -134,5 +143,9 @@ ul {
   top: -20px;
   width: 200px;
   height: 100px;
+}
+
+.li-popper {
+  padding: 0;
 }
 </style>

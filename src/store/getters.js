@@ -6,6 +6,7 @@ const getters = {
   all_routes: () => allRoutes,
   permission_routes: state => state.permission.permission_routes,
   device: state => state.app.device,
-  fullSrceen: state => state.app.fullSrceen
+  fullSrceen: state => state.app.fullSrceen,
+  language: state => state.app.language || localStorage.getItem('lang') || 'zh'
 }
 export default getters

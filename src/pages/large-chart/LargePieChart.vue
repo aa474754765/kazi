@@ -54,7 +54,7 @@ export default {
           trigger: 'item'
         },
         title: {
-          text: '当前人口分布',
+          text: this.$t('chart.title_2'),
           left: 'center'
         },
         legend: {

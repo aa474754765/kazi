@@ -21,14 +21,14 @@
     </el-form>
     <el-divider></el-divider>
     <el-form :inline="true" :model="newLine" :rules="rules" ref="newForm">
-      <el-form-item label="标签名" prop="label">
-        <el-input v-model="newLine.label" placeholder="请输入内容"></el-input>
+      <el-form-item :label="$t('form.label')" prop="label">
+        <el-input v-model="newLine.label" :placeholder="$t('form.enter_content')"></el-input>
       </el-form-item>
-      <el-form-item label="栏数">
-        <el-input-number v-model="newLine.num" :min="1" :max="4" label="栏数"></el-input-number>
+      <el-form-item :label="$t('form.column_count')">
+        <el-input-number v-model="newLine.num" :min="1" :max="4" :label="$t('form.column_count')"></el-input-number>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="addNewLine">添加新行</el-button>
+        <el-button type="primary" @click="addNewLine">{{ $t('button.add_new_line') }}</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -44,7 +44,7 @@ export default {
   data() {
     let validateLabel = (rule, value, callback) => {
       if (this.formItemList.find(i => i.label === value)) {
-        callback(new Error('标签名不能重复'))
+        callback(new Error(this.$t('form.duplicate_label')))
       } else {
         callback()
       }
@@ -61,7 +61,7 @@ export default {
       },
       rules: {
         label: [
-          { required: true, message: '请输入标签名', trigger: 'change' },
+          { required: true, message: this.$t('form.enter_label'), trigger: 'change' },
           { validator: validateLabel, trigger: 'blur' }
         ]
       }

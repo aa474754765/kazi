@@ -1,21 +1,21 @@
 <template>
   <div v-if="!realItem.hidden">
     <template v-if="hasChildren(realItem.children)">
-      <el-submenu :index="realPath" :title="realItem.meta && realItem.meta.title">
+      <el-submenu :index="realPath" :title="title">
         <template v-slot:title>
           <i :class="'el-icon-' + (realItem.meta && realItem.meta.icon || 'menu')"></i>
-          <span v-if="!collapse">{{ realItem.meta && realItem.meta.title }}</span>
+          <span v-if="!collapse">{{ title }}</span>
         </template>
         <sidebar-item v-for="child in realItem.children" :key="child.path" :item="child" :path="realPath"
           :collapse="collapse" :level="level + 1"></sidebar-item>
       </el-submenu>
     </template>
     <template v-else>
-      <router-link class="router-link" :to="realPath" :title="realItem.meta && realItem.meta.title">
-        <el-menu-item :index="realPath" :disabled="realItem.disabled">
+      <router-link class="router-link" :to="realPath" :title="title">
+        <el-menu-item :class="'router-level-' + level" :index="realPath" :disabled="realItem.disabled">
           <i :class="'el-icon-' + (realItem.meta && realItem.meta.icon || 'menu')"></i>
           <template v-slot:title>
-            <span>{{ realItem.meta && realItem.meta.title }}</span>
+            <span>{{ title }}</span>
           </template>
         </el-menu-item>
       </router-link>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { i18nTitle } from '@/router/utils'
+
 export default {
   name: 'SidebarItem',
   props: {
@@ -57,6 +59,9 @@ export default {
       }
       return result
     },
+    title() {
+      return i18nTitle.call(this, this.item, this.item.meta && this.item.meta.title)
+    },
     realPath() {
       return !this.path ? this.realItem.path : `${this.path}/${this.realItem.path}`
     }
@@ -82,6 +87,12 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   padding-right: 12px;
+}
+
+.el-menu-item.router-level-0 {
+  height: 48px;
+  line-height: 48px;
+  font-size: 14px;
 }
 </style>
 <style>

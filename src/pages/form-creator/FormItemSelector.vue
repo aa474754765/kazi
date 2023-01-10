@@ -12,39 +12,39 @@ export default {
     return {
       array: [
         {
-          title: '单选框',
+          title: this.$t('form.radio'),
           selector: 'el-radio'
         },
         {
-          title: '多选框',
+          title: this.$t('form.checkbox'),
           selector: 'el-checkbox'
         },
         {
-          title: '输入框',
+          title: this.$t('form.input'),
           selector: 'el-input'
         },
         {
-          title: '选择器',
+          title: this.$t('form.select'),
           selector: 'el-select'
         },
         {
-          title: '开关',
+          title: this.$t('form.switch'),
           selector: 'el-switch'
         },
         {
-          title: '滑块',
+          title: this.$t('form.slider'),
           selector: 'el-slider'
         },
         {
-          title: '评分',
+          title: this.$t('form.rate'),
           selector: 'el-rate'
         },
         {
-          title: '时间选择器',
+          title: this.$t('form.time_picker'),
           selector: 'el-time-picker'
         },
         {
-          title: '日期选择器',
+          title: this.$t('form.date_picker'),
           selector: 'el-date-picker'
         }
       ]

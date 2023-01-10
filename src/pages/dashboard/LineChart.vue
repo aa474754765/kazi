@@ -41,7 +41,7 @@ export default {
       this.chart.setOption({
         color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
         title: {
-          text: '月度销售量'
+          text: this.$t('chart.title_4')
         },
         tooltip: {
           trigger: 'axis',
@@ -53,7 +53,7 @@ export default {
           }
         },
         legend: {
-          data: ['华北', '华东', '华南', '华中']
+          data: [this.$t('chart.region1'), this.$t('chart.region2'), this.$t('chart.region3'), this.$t('chart.region4')]
         },
         toolbox: {
           feature: {
@@ -70,7 +70,9 @@ export default {
           {
             type: 'category',
             boundaryGap: false,
-            data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+            data: [this.$t('chart.jan'), this.$t('chart.feb'), this.$t('chart.mar'), this.$t('chart.apr'),
+              this.$t('chart.may'), this.$t('chart.jun'), this.$t('chart.jul'), this.$t('chart.aug'),
+              this.$t('chart.sep'), this.$t('chart.oct'), this.$t('chart.nov'), this.$t('chart.dec')]
           }
         ],
         yAxis: [
@@ -80,7 +82,7 @@ export default {
         ],
         series: [
           {
-            name: '华北',
+            name: this.$t('chart.region1'),
             type: 'line',
             stack: 'Total',
             smooth: true,
@@ -107,7 +109,7 @@ export default {
             data: [140, 232, 101, 264, 90, 340, 250, 140, 232, 101, 264, 90, 340, 250]
           },
           {
-            name: '华东',
+            name: this.$t('chart.region2'),
             type: 'line',
             stack: 'Total',
             smooth: true,
@@ -134,7 +136,7 @@ export default {
             data: [120, 282, 111, 234, 220, 340, 310, 120, 282, 111, 234, 220, 340, 310]
           },
           {
-            name: '华南',
+            name: this.$t('chart.region3'),
             type: 'line',
             stack: 'Total',
             smooth: true,
@@ -161,7 +163,7 @@ export default {
             data: [320, 132, 201, 334, 190, 130, 220, 320, 132, 201, 334, 190, 130, 220]
           },
           {
-            name: '华中',
+            name: this.$t('chart.region4'),
             type: 'line',
             stack: 'Total',
             smooth: true,

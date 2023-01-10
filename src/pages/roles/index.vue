@@ -2,25 +2,25 @@
   <div>
     <el-row>
       <section class="operation-panel">
-        <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>新建角色</el-button>
+        <el-button @click="create"><i class="el-icon-circle-plus el-icon--left"></i>{{ $t('form.create_role') }}</el-button>
       </section>
     </el-row>
     <el-row class="table-container">
       <el-table :data="roles" style="width: 100%">
         <el-table-column type="index"></el-table-column>
-        <el-table-column prop="name" label="角色名" align="center">
+        <el-table-column prop="name" :label="$t('form.role_name')" align="center">
         </el-table-column>
       </el-table>
     </el-row>
-    <el-dialog title="新建角色" :visible.sync="dialogVisible" width="30%">
+    <el-dialog :title="$t('form.create_role')" :visible.sync="dialogVisible" width="30%">
       <el-form :model="form" :rules="rules" ref="form" label-width="80px">
-        <el-form-item label="名称" prop="name">
+        <el-form-item :label="$t('form.name')" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button size="small" @click="dialogVisible = false">取 消</el-button>
-        <el-button size="small" type="primary" @click="submit">确 定</el-button>
+        <el-button size="small" @click="dialogVisible = false">{{ $t('button.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="submit">{{ $t('button.confirm') }}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -37,7 +37,7 @@ export default {
   data() {
     let validateName = (rule, value, callback) => {
       if (this.roles.find(i => i.name === value)) {
-        callback(new Error('角色名不能重复'))
+        callback(new Error(this.$t(`form.duplicate_role`)))
       } else {
         callback()
       }
@@ -49,7 +49,7 @@ export default {
       },
       rules: {
         name: [
-          { required: true, message: '不能为空', trigger: 'blur' },
+          { required: true, message: this.$t(`form.null`), trigger: 'blur' },
           { validator: validateName, trigger: 'blur' }
         ]
       }
@@ -78,7 +78,7 @@ export default {
           this.dialogVisible = false
           this.$store.dispatch('user/addRole', this.form.name)
           this.$message({
-            message: '新建成功',
+            message: this.$t(`message.create_success`),
             type: 'success'
           })
         }

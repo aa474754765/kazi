@@ -4,14 +4,14 @@
     class="card">
     <span class="tag">{{ attr.type }}</span>
     <div class="from-to-text">
-      <a>{{ attr.calculateType ? '剩' : '第' }}</a>
+      <a>{{ attr.calculateType ? $t('form.left') : $t('form.pass') }}</a>
       <a>{{ day }}</a>
-      <a>天</a>
+      <a>{{ $t('form.day') }}</a>
     </div>
     <div class="divider" :style="{ 'background-color': attr.textColor }"></div>
     <div class="body-text">
       <a>{{ attr.name }}</a>
-      <a>{{ '纪念日：' + attr.date }}</a>
+      <a>{{ $t('form.memory_day') + '：' + attr.date }}</a>
     </div>
     <i v-if="inEdit" @click="$emit('remove', attr)" class="el-icon-close"></i>
     <i v-if="inEdit" @click="$emit('edit', attr)" class="el-icon-edit"></i>
@@ -29,10 +29,10 @@ export default {
   computed: {
     day() {
       let result = 0
-      // 计算过了多少天
+      // pass days
       if (!this.attr.calculateType) {
         result = (new Date(this.getToday()).getTime() - new Date(this.attr.date).getTime()) / 3600 / 1000 / 24
-        // 计算还有多少天
+        // days left
       } else {
         let nextDay = `${new Date().getFullYear()}-${this.addZero(new Date(this.attr.date).getMonth() + 1)}-${this.addZero(new Date(this.attr.date).getDate())}`
         if (new Date(nextDay) < new Date(this.getToday())) {
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    // yyyy-mm-dd格式
+    // yyyy-mm-dd
     getToday() {
       return `${new Date().getFullYear()}-${this.addZero(new Date().getMonth() + 1)}-${this.addZero(new Date().getDate())}`
     },

@@ -2,10 +2,10 @@
   <div v-loading="loading" element-loading-background="rgba(255, 255, 255, 0.1)">
     <el-card>
       <div class="operation-panel">
-        <span>数据量</span>
+        <span>{{ $t('form.data_volume') }}</span>
         <el-slider :min="100000" :max="1000000" v-model="count" :step="10000">
         </el-slider>
-        <span><el-button @click="reloadData">刷新数据</el-button></span>
+        <span><el-button @click="reloadData">{{ $t('form.refresh_data') }}</el-button></span>
       </div>
     </el-card>
     <el-card>
@@ -42,7 +42,7 @@ export default {
     return {
       count: 100000,
       loading: true,
-      legend: ['西虹市', '北虹市', '南虹市', '东虹市'],
+      legend: [this.$t('chart.city1'), this.$t('chart.city2'), this.$t('chart.city3'), this.$t('chart.city4')],
       chartData: null
     }
   },
