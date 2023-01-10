@@ -1,0 +1,25 @@
+<svg height="600" version="1.1" width="800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 600 442" xmlns:xlink="http://www.w3.org/1999/xlink"><desc>Created with Snap</desc><defs/><g id="root" contentwidth="247.8" contentheight="73.89999999999999">
+          <rect class="background" height="2000%" width="2000%" y="-1000%" x="-1000%" style="" fill="transparent"/>
+          <g class="content" id="content" transform="matrix(1,0,0,1,166.9,256.65)">
+            <g class="icon">
+            </g>
+            <g id="icon_name_and_slogan_gap">
+            </g>
+            <g class="name_and_slogan" id="name_and_slogan_id">
+              <g class="name"><g id="nameDefaultGroup"><path d="M9.2 -72.6L27.7 -72.6L27.7 -43.8L36.7 -43.8L53.2 -72.6L72.1 -72.6L50.8 -36.5L76.1 1.3L55.4 1.3L36.7 -28.5L27.7 -28.5L27.7 1.3L9.2 1.3L9.2 -72.6M138.7 -15.7L112 -15.7L106.5 1L86.5 1L113.7 -72.6L136.7 -72.6L164.9 1L144.1 1L138.7 -15.7M134.6 -28.3L125.5 -56.5L116.2 -28.3L134.6 -28.3M168.3 -72.4L225.3 -72.4L225.3 -55.2L190.3 -14.7L227 -14.7L227 1.2L168.7 1.2L168.7 -15.4L203.4 -56.7L168.3 -56.7L168.3 -72.4M238.1 -72.5L257 -72.5L257 1.1L238.1 1.1L238.1 -72.5z" style="" fill="#f2faff" id="namepathdata"/></g></g>
+              <g class="slogan"><g id="sloganDefaultGroup"/></g>
+            </g>
+            <g class="border">
+            </g>
+          </g>
+          
+          <defs id="defs">
+            <mask xmlns="http://www.w3.org/2000/svg" id="mask">
+                <rect id="showAll" fill="white" x="0" y="0" width="0" height="0"/>
+                <rect id="hideNameBg" fill="black" x="0" y="0" width="0" height="0" stroke-width="2" stroke="black"/>
+                <rect id="hideSloganBg" fill="black" x="0" y="0" width="0" height="0" stroke-width="2" stroke="black"/>
+            </mask>
+          </defs>
+          
+        </g>
+        </svg>

@@ -1,6 +1,6 @@
 <template>
-  <el-container>
-    <el-header>{{ title }}</el-header>
+  <el-container direction="vertical">
+    <page-header></page-header>
     <el-container>
       <el-aside :width="device === 'mobile' ? '64px' : '200px'">
         <side-bar></side-bar>
@@ -27,10 +27,11 @@
 import { mapGetters } from 'vuex'
 import ResizeHandler from './ResizeHandler'
 import SideBar from './SideBar'
+import PageHeader from './Header'
 
 export default {
   name: 'Layout',
-  components: { SideBar },
+  components: { SideBar, PageHeader },
   mixins: [ResizeHandler],
   data() {
     return {
@@ -59,13 +60,6 @@ export default {
 
 <style lang="scss">
 @import "~@/styles/variables.scss";
-
-.el-header {
-  background-color: $blue;
-  text-align: center;
-  line-height: 60px;
-  height: $headerHeight;
-}
 
 .main-contaner {
   max-height: calc(100vh - #{$headerHeight});

@@ -23,7 +23,7 @@ export default {
     },
     svgClass() {
       if (this.className) {
-        return 'svg-icon ' + this.className
+        return this.className
       } else {
         return 'svg-icon'
       }

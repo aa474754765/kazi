@@ -54,7 +54,7 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
-        include: [resolve('src/icons')],
+        include: [resolve('src/icons/svg')],
         options: {
           symbolId: 'icon-[name]'
         }
@@ -66,7 +66,7 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         },
-        exclude: [resolve('src/icons')]
+        exclude: [resolve('src/icons/svg')]
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
