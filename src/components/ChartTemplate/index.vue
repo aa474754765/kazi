@@ -31,11 +31,10 @@ export default {
     this.$nextTick(() => {
       this.initChart()
     })
-    window.onresize = () => {
-      this.chart.resize()
-    }
+    window.addEventListener('resize', this.resizeHandler)
   },
   beforeDestroy() {
+    window.removeEventListener('resize', this.resizeHandler)
     if (this.chart) {
       this.chart.dispose()
       this.chart = null
@@ -47,6 +46,9 @@ export default {
     },
     setOptions() {
       this.chart.setOption({})
+    },
+    resizeHandler() {
+      this.chart.resize()
     }
   }
 }
