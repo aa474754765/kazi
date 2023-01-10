@@ -87,8 +87,23 @@ export default {
       this.reloadCards()
     },
     removeCard(data) {
-      deleteArrayStorage(storageKey, data.id)
-      this.reloadCards()
+      this.$confirm('此操作将删除纪念日, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        deleteArrayStorage(storageKey, data.id)
+        this.reloadCards()
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
     },
     reloadCards() {
       this.cards = getStorage(storageKey) || []
@@ -123,9 +138,11 @@ i {
 
 .card-container {
   display: flex;
+  flex-wrap: wrap;
 
   &>div {
     flex-grow: 1;
+    min-width: 240px;
   }
 
   .edit-form {
