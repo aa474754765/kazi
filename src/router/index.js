@@ -117,15 +117,7 @@ export const allRoutes = [
         path: 'communication',
         component: () => import('@/pages/communication/Grandpa'),
         name: 'communication',
-        meta: { title: '组件通信', icon: 'data-analysis' },
-        children: [
-          {
-            path: 'form_creator1',
-            component: () => import('@/pages/form-creator/index'),
-            name: 'formCreator1',
-            meta: { title: '自定义表单', icon: 'eleme' }
-          }
-        ]
+        meta: { title: '组件通信', icon: 'data-analysis' }
       }
     ]
   },
