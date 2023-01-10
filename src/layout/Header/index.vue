@@ -6,13 +6,12 @@
         <li>
           <router-link to="/">
             <span>首页</span>
-
           </router-link>
         </li>
       </ul>
     </div>
     <ul class="header-right">
-      <li><svg-icon icon-class="fullscreen"></svg-icon><span v-if="showText">大屏</span></li>
+      <li @click="setToFullContent"><svg-icon icon-class="fullscreen"></svg-icon><span v-if="showText">大屏</span></li>
       <li><svg-icon icon-class="message"></svg-icon><span v-if="showText">消息</span></li>
       <li><svg-icon icon-class="international"></svg-icon><span v-if="showText">语言</span></li>
       <li><span><el-avatar :size="showText ? 'medium' : 'small'" :src="url"></el-avatar></span>
@@ -38,6 +37,11 @@ export default {
     showText() {
       return this.device === 'desktop'
     }
+  },
+  methods: {
+    setToFullContent() {
+      this.$store.dispatch('app/toggleScreenStatus')
+    }
   }
 }
 
@@ -52,7 +56,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   box-shadow: inset 0 -1px #f1f2f3;
-  background-color: #2c3e50;
+  background-color: $background-color-kazi;
   color: $color-kazi;
 
   .header-left {

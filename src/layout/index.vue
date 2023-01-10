@@ -1,8 +1,8 @@
 <template>
-  <el-container direction="vertical">
-    <page-header></page-header>
+  <el-container direction="vertical" :class="{ 'full-content-screen': fullSrceen }">
+    <page-header v-if="!fullSrceen"></page-header>
     <el-container>
-      <el-aside :width="device === 'mobile' ? '64px' : '200px'">
+      <el-aside v-if="!fullSrceen" :width="device === 'mobile' ? '64px' : '200px'">
         <side-bar></side-bar>
       </el-aside>
       <el-container class="main-contaner">
@@ -19,6 +19,7 @@
           <router-view :key="key" />
         </el-main>
       </el-container>
+      <exit-fullscreen v-if="fullSrceen"></exit-fullscreen>
     </el-container>
   </el-container>
 </template>
@@ -28,10 +29,11 @@ import { mapGetters } from 'vuex'
 import ResizeHandler from './ResizeHandler'
 import SideBar from './SideBar'
 import PageHeader from './Header'
+import ExitFullscreen from './ExitFullscreen'
 
 export default {
   name: 'Layout',
-  components: { SideBar, PageHeader },
+  components: { SideBar, PageHeader, ExitFullscreen },
   mixins: [ResizeHandler],
   data() {
     return {
@@ -40,7 +42,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'device'
+      'device',
+      'fullSrceen'
     ]),
     key() {
       return this.$route.path
@@ -63,6 +66,10 @@ export default {
 
 .main-contaner {
   max-height: calc(100vh - #{$headerHeight});
+}
+
+.full-content-screen .main-contaner {
+  max-height: 100vh;
 }
 
 .el-main {
