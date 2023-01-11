@@ -42,6 +42,7 @@ export const allRoutes = [
     path: '/board',
     component: Layout,
     requiredPermission: true,
+    hidden: true,
     children: [
       {
         path: 'message',
