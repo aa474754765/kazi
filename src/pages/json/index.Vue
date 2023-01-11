@@ -40,7 +40,7 @@ export default {
       jsonResult: null,
       rules: {
         jsonText: [
-          { required: true, message: this.$t('form.please_enter_your_json'), trigger: 'blur' },
+          { required: true, message: this.$t('form.enter_your_json'), trigger: 'blur' },
           { validator: validateJson, message: this.$t('form.wrong_json'), trigger: 'change' }
         ]
       }
