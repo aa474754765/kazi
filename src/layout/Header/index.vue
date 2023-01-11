@@ -15,7 +15,7 @@
         $t('menu.fullScreen')
       }}</span></li>
       <el-popover ref="message" :open-delay="400" placement="bottom-end" trigger="hover" popper-class="li-popper">
-        <message-box @close="$refs.message.doClose()"></message-box>
+        <message-box></message-box>
         <li slot="reference">
           <svg-icon icon-class="message"></svg-icon><span v-if="showText">{{
             $t('menu.message')
@@ -28,8 +28,10 @@
           $t('menu.language')
         }}</span></li>
       </el-popover>
-      <li><span><el-avatar :size="showText ? 'medium' : 'small'" :src="url"></el-avatar></span>
-      </li>
+      <el-popover ref="userInfo" :open-delay="400" placement="bottom-end" trigger="hover" popper-class="li-popper">
+        <user-info @close="$refs.userInfo.doClose()"></user-info>
+        <li slot="reference"><span><el-avatar :size="showText ? 'medium' : 'small'" :src="url"></el-avatar></span></li>
+      </el-popover>
     </ul>
   </el-header>
 </template>
@@ -38,12 +40,14 @@
 import { mapGetters } from 'vuex'
 import Language from './Language.vue'
 import MessageBox from './MessageBox.vue'
+import UserInfo from './UserInfo.vue'
 
 export default {
   name: '',
   components: {
     Language,
-    MessageBox
+    MessageBox,
+    UserInfo
   },
   data() {
     return {
@@ -115,14 +119,6 @@ ul {
 
     svg+span {
       margin-top: 6px;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: inherit;
     }
 
   }
