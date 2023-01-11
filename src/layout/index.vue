@@ -66,11 +66,11 @@ export default {
 @import "~@/styles/variables.scss";
 
 .main-contaner {
-  max-height: calc(100vh - #{$headerHeight});
+  height: calc(100vh - #{$headerHeight});
 }
 
 .full-content-screen .main-contaner {
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .el-main {

@@ -1,8 +1,9 @@
 {
-  "menu" : {
+  "menu": {
     "fullScreen": "Full Screen",
     "exit_fullScreen": "EXIT",
     "message": "Messages",
+    "notification": "Notifications",
     "language": "Language",
     "home": "Home",
     "board": "Message Board",
@@ -113,7 +114,15 @@
   "page": {
     "address_transfomed": "Converted address",
     "create_your_day": "Come and add your first anniversary!",
-    "role_assign_text": "Assign different page permissions to each role!"
+    "role_assign_text": "Assign different page permissions to each role!",
+    "notification1": "One user has subscribed you.",
+    "notification2": "Please check your monthly weekly report.",
+    "notification3": "You have taken a screenshot.",
+    "notification4": "Please check your electronic bill.",
+    "message1": "Green algae head commented on you.",
+    "message2": "Thin into lightning and killed you.",
+    "message3": "We bragged and commented on you",
+    "message4": "I can't comment on you"
   },
   "chart": {
     "city1": "city1",

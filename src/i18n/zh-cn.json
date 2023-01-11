@@ -3,6 +3,7 @@
     "fullScreen": "大屏",
     "exit_fullScreen": "退出大屏",
     "message": "消息",
+    "notification": "通知",
     "language": "语言",
     "home": "首页",
     "board": "留言板",
@@ -113,7 +114,15 @@
   "page": {
     "address_transfomed": "转换后的地址",
     "create_your_day": "快来添加你的第一个纪念日吧！",
-    "role_assign_text": "为每个角色分配不同的页面权限吧！"
+    "role_assign_text": "为每个角色分配不同的页面权限吧！",
+    "notification1": "有一个用户收藏了你",
+    "notification2": "请查收你的月度周报",
+    "notification3": "您已截图",
+    "notification4": "请查收您的电子账单",
+    "message1": "绿藻头 评论了您",
+    "message2": "瘦成闪电劈死你 评论了您",
+    "message3": "有空一起吹牛 评论了您",
+    "message4": "一碗成不下 评论了您"
   },
   "chart": {
     "city1": "西虹市",

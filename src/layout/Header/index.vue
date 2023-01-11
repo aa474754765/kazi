@@ -11,11 +11,22 @@
       </ul>
     </div>
     <ul class="header-right">
-      <li @click="setToFullContent"><svg-icon icon-class="fullscreen"></svg-icon><span v-if="showText">{{ $t('menu.fullScreen') }}</span></li>
-      <li><svg-icon icon-class="message"></svg-icon><span v-if="showText">{{ $t('menu.message') }}</span></li>
-      <el-popover ref="language" :open-delay="400" placement="bottom" trigger="hover"  popper-class="li-popper">
+      <li @click="setToFullContent"><svg-icon icon-class="fullscreen"></svg-icon><span v-if="showText">{{
+        $t('menu.fullScreen')
+      }}</span></li>
+      <el-popover ref="message" :open-delay="400" placement="bottom-end" trigger="hover" popper-class="li-popper">
+        <message-box @close="$refs.message.doClose()"></message-box>
+        <li slot="reference">
+          <svg-icon icon-class="message"></svg-icon><span v-if="showText">{{
+            $t('menu.message')
+          }}</span>
+        </li>
+      </el-popover>
+      <el-popover ref="language" :open-delay="400" placement="bottom" trigger="hover" popper-class="li-popper">
         <language @close="$refs.language.doClose()"></language>
-        <li slot="reference"><svg-icon icon-class="international"></svg-icon><span v-if="showText">{{ $t('menu.language') }}</span></li>
+        <li slot="reference"><svg-icon icon-class="international"></svg-icon><span v-if="showText">{{
+          $t('menu.language')
+        }}</span></li>
       </el-popover>
       <li><span><el-avatar :size="showText ? 'medium' : 'small'" :src="url"></el-avatar></span>
       </li>
@@ -26,11 +37,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import Language from './Language.vue'
+import MessageBox from './MessageBox.vue'
 
 export default {
   name: '',
   components: {
-    Language
+    Language,
+    MessageBox
   },
   data() {
     return {
@@ -85,7 +98,7 @@ ul {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 12px;
+    padding: 0 10px;
     font-size: 16px;
     color: inherit;
     cursor: pointer;
@@ -111,6 +124,7 @@ ul {
     a:visited {
       color: inherit;
     }
+
   }
 }
 
