@@ -1,8 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+/* eslint-disable no-undef */
 import Layout from '@/layout'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 function filterRoutes(routes) {
   const res = []
@@ -167,6 +166,6 @@ export const allRoutes = [
 
 export const defaultRoutes = filterRoutes(allRoutes)
 
-export default new Router({
+export default new VueRouter({
   routes: defaultRoutes
 })

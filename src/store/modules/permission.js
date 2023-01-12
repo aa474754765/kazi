@@ -1,6 +1,5 @@
 import router, { allRoutes } from '@/router'
 import { getRolePath } from '@/router/utils'
-import Router from 'vue-router'
 
 function pathInChildern(route, accessPaths) {
   let result = false
@@ -43,8 +42,8 @@ const actions = {
       const accessPaths = getRolePath(roleName)
       const routes = filterRoutes(allRoutes, accessPaths)
       // refresh the routes based on the routes by role
-      // eslint-disable-next-line new-cap
-      router.matcher = new Router({
+      // eslint-disable-next-line new-cap, no-undef
+      router.matcher = new VueRouter({
         routes: routes
       }).matcher
       commit('SET_ROUTES', routes)

@@ -2,7 +2,7 @@
   <div v-if="!realItem.hidden">
     <template v-if="hasChildren(realItem.children)">
       <el-submenu :index="realPath" :title="title">
-        <template v-slot:title>
+        <template slot="title">
           <i :class="'el-icon-' + (realItem.meta && realItem.meta.icon || 'menu')"></i>
           <span v-if="!collapse">{{ title }}</span>
         </template>
@@ -14,7 +14,7 @@
       <router-link class="router-link" :to="realPath" :title="title">
         <el-menu-item :class="'router-level-' + level" :index="realPath" :disabled="realItem.disabled">
           <i :class="'el-icon-' + (realItem.meta && realItem.meta.icon || 'menu')"></i>
-          <template v-slot:title>
+          <template slot="title">
             <span>{{ title }}</span>
           </template>
         </el-menu-item>

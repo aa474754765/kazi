@@ -1,2 +1,2 @@
-import Vue from 'vue'
+// eslint-disable-next-line no-undef
 export const EventBus = new Vue()

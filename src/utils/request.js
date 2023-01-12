@@ -1,4 +1,4 @@
-import axios from 'axios'
+/* eslint-disable no-undef */
 
 // create an axios instance
 const instance = axios.create({
