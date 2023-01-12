@@ -20,7 +20,6 @@
 
 <script>
 import { getRolePath, i18nTitle } from '@/router/utils'
-import { mapGetters } from 'vuex'
 
 export default {
   name: '',
@@ -35,7 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...Vuex.mapGetters([
       'roles',
       'all_routes',
       'currentRole'

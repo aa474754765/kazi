@@ -100,8 +100,10 @@ module.exports = {
   },
   externals: {
     'vue': 'Vue',
-    "element-ui": "ELEMENT",
-    "vue-router": "VueRouter",
-    axios: 'axios'
+    'element-ui': 'ELEMENT',
+    'vue-router': 'VueRouter',
+    'axios': 'axios',
+    'vuex': 'Vuex',
+    'echarts': 'echarts'
   }
 }

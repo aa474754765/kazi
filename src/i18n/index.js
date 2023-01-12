@@ -1,6 +1,5 @@
 import VueI18n from 'vue-i18n'
 
-// eslint-disable-next-line no-undef
 Vue.use(VueI18n)
 
 // 定义挂载文件

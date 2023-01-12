@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import Language from './Language.vue'
 import MessageBox from './MessageBox.vue'
 import UserInfo from './UserInfo.vue'
@@ -56,7 +55,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...Vuex.mapGetters([
       'device'
     ]),
     showText() {

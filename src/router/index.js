@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import Layout from '@/layout'
 
 Vue.use(VueRouter)

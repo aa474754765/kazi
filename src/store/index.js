@@ -1,7 +1,5 @@
-import Vuex from 'vuex'
 import getters from './getters'
 
-// eslint-disable-next-line no-undef
 Vue.use(Vuex)
 
 const modulesFiles = require.context('./modules', true, /\.js$/)

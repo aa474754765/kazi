@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { i18nTitle } from '@/router/utils'
 import ResizeHandler from './ResizeHandler'
 import SideBar from './SideBar'
@@ -42,7 +41,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
+    ...Vuex.mapGetters([
       'device',
       'fullSrceen'
     ]),

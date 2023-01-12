@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import * as echarts from 'echarts'
-
 export default {
   name: '',
   data() {

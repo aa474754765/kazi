@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 // create an axios instance
 const instance = axios.create({
   baseURL: '', // url = base url + request url
