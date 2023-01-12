@@ -23,6 +23,15 @@ export function getRolePath(roleName) {
   return paths
 }
 
+export function getTitleByi18n(route, messages) {
+  // regexp, for get the last path, /a/n --> n, /a --> a, /a/b/c --> c
+  const name = `${route.path}`.replace(/(\w*\/)*(?=\w*$)/, '') || 'home'
+  if (messages.menu[name]) {
+    return messages.menu[name]
+  }
+  return route.meta && route.meta.title
+}
+
 export function i18nTitle(route, replaceTitle) {
   // regexp, for get the last path, /a/n --> n, /a --> a, /a/b/c --> c
   const name = `${route.path}`.replace(/(\w*\/)*(?=\w*$)/, '') || 'home'
